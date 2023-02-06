@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/corridor_cornerRoundWindow.obj-7ce5dc532132dcf0e2945dde6605449e.mesh"
+
+[deps]
+
+files=[ "res://.import/corridor_cornerRoundWindow.obj-7ce5dc532132dcf0e2945dde6605449e.mesh" ]
+
+source_file="res://assets/OBJ format/corridor_cornerRoundWindow.obj"
+dest_files=[ "res://.import/corridor_cornerRoundWindow.obj-7ce5dc532132dcf0e2945dde6605449e.mesh", "res://.import/corridor_cornerRoundWindow.obj-7ce5dc532132dcf0e2945dde6605449e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

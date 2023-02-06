@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/monorail_trackSlope.obj-e5258436822985a9da1dd326b4c25ff2.mesh"
+
+[deps]
+
+files=[ "res://.import/monorail_trackSlope.obj-e5258436822985a9da1dd326b4c25ff2.mesh" ]
+
+source_file="res://assets/OBJ format/monorail_trackSlope.obj"
+dest_files=[ "res://.import/monorail_trackSlope.obj-e5258436822985a9da1dd326b4c25ff2.mesh", "res://.import/monorail_trackSlope.obj-e5258436822985a9da1dd326b4c25ff2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

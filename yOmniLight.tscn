@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="OmniLight" type="OmniLight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9971, 0, 0 )
+light_color = Color( 0.254902, 0.933333, 0.137255, 1 )
+light_energy = 3.0
+omni_range = 10.0

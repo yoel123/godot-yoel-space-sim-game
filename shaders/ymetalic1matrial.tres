@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://shaders/ymetalic1.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 0.129412, 0.129412, 0.129412, 1 )
+shader_param/metalic = 1.0
+shader_param/roughness = 0.0
+shader_param/ColorUniform = Color( 0, 0, 0, 1 )

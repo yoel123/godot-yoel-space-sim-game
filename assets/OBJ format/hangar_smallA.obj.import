@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/hangar_smallA.obj-e471c2e6a19ac9138e3fba3cb13b908f.mesh"
+
+[deps]
+
+files=[ "res://.import/hangar_smallA.obj-e471c2e6a19ac9138e3fba3cb13b908f.mesh" ]
+
+source_file="res://assets/OBJ format/hangar_smallA.obj"
+dest_files=[ "res://.import/hangar_smallA.obj-e471c2e6a19ac9138e3fba3cb13b908f.mesh", "res://.import/hangar_smallA.obj-e471c2e6a19ac9138e3fba3cb13b908f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
