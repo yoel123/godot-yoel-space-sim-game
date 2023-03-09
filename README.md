@@ -1,9 +1,9 @@
 # the yoel space combat sim game
 
 ## gameplay gifs:
-[![gameplay 1](https://github.com/yoel123/godot-yoel-space-sim-game/gifs/1.gif)]
-[![gameplay 2](https://github.com/yoel123/godot-yoel-space-sim-game/gifs/2.gif)]
-[![gameplay 3](https://github.com/yoel123/godot-yoel-space-sim-game/gifs/3.gif)]
+[![gameplay 1](https://github.com/yoel123/godot-yoel-space-sim-game/blob/main/gifs/1.gif)]
+[![gameplay 2](https://github.com/yoel123/godot-yoel-space-sim-game/blob/main/gifs/2.gif)]
+[![gameplay 3](https://github.com/yoel123/godot-yoel-space-sim-game/blob/main/gifs/3.gif)]
 
 the big goal of this project is to help programmers show off their skills. a more secondary goal is to create a fun and free game.
 so if your a programmer without a degree or whatever and need to prove "your skill" this here is an "impressive" or at least something people can't ignore as mediocre or flock or whatever.
