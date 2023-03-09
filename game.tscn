@@ -75,5 +75,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -328.285, 81.4067, 43.8179 )
 team = 1
 
 [node name="enemy7" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -328.285, 81.4067, -50.2708 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -328.082, 81.8652, -50.2916 )
 team = 1

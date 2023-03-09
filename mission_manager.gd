@@ -56,7 +56,7 @@ func survive(delta):
 
 #checks if all "mission_targets" are destroyed (retyrns true)
 func check_if_all_targets_destroyed():
-	#convet mission_targets string to array
+	#convret mission_targets string to array
 	var targs_to_destroy = mission_targets.split(",")
 	#get the number of targets needed to dystroy
 	var target_count = targs_to_destroy.size()
