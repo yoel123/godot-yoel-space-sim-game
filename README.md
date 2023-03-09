@@ -1,7 +1,6 @@
 # the yoel space combat sim game
 
 ## gameplay gifs:
-[![gameplay 1](https://github.com/yoel123/godot-yoel-space-sim-game/blob/main/gifs/1.gif)]
 [![gameplay 2](https://github.com/yoel123/godot-yoel-space-sim-game/blob/main/gifs/2.gif)]
 [![gameplay 3](https://github.com/yoel123/godot-yoel-space-sim-game/blob/main/gifs/3.gif)]
 
