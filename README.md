@@ -1,5 +1,10 @@
 # the yoel space combat sim game
 
+## gameplay gifs:
+[![gameplay 1](https://github.com/yoel123/godot-yoel-space-sim-game/gifs/1.gif)]
+[![gameplay 2](https://github.com/yoel123/godot-yoel-space-sim-game/gifs/2.gif)]
+[![gameplay 3](https://github.com/yoel123/godot-yoel-space-sim-game/gifs/3.gif)]
+
 the big goal of this project is to help programmers show off their skills. a more secondary goal is to create a fun and free game.
 so if your a programmer without a degree or whatever and need to prove "your skill" this here is an "impressive" or at least something people can't ignore as mediocre or flock or whatever.
 
@@ -48,6 +53,34 @@ contact me before you start working on a bounty, I assign people on bounties.
 until other people start funding this project I will decide which feature gets a bounty and "how much" you get for it.
 if you donated you can assign your money to any bounty you want.
 eventually, people will be able to vote on stuff like this, for now its too early.
+
+## what this project needs
+
+as i menthionded in donations:
+
+programmers: for gamplay,gui,graphics (shaders).
+mostly those who are fammilier with godot and gdscript and built at least
+one project and did a couple of tutorials. its a 3d game so knowing the 3d api and 3d math
+will be needed for some of the features.
+3d is not needed for gui and data manipulation and some gamplay logic.
+
+game designer: for balance and features, i have ideas but im not as knowledgeble
+as a game designer.
+
+level designer(godot): somone that knows how to use the godot editor, its a powerfull tool.
+in short with these tools and the modulare objects i built,ther is no need for code to 
+build levels.
+
+music and sound effects: the game has none as of now,if anyone wants to donate relvant assets,it would be 
+very helpfull for the project.
+
+story writer: somone to write the games story,cinmatics,mission brifing debrifing and any
+ingame cinmatic or chatter betwwen charecters.
+
+2d/3d art: mostly 2d for gui, for the 3d part i will need some low poly modals,most of then
+i can make myself, i made the 3d missile and big ship from kennys modular space pack.
+any help is welcome.
+
 
 ## contact me
 
