@@ -1,0 +1,49 @@
+pre
+{
+    -webkit-box-shadow: 0 0 0 3px #eee;
+    box-shadow: 0 0 0 3px #eee;
+	font-size: 14px !important;
+}
+
+h5
+{
+	font-size:15px !important;
+	margin: 0;
+	margin-bottom: 5px;
+}
+.ycontent
+{
+min-height: 1100px;
+}
+/*////////sidebars//////*/
+.ysidebar 
+{
+   padding-left: 50px;
+}
+.ysidebar ul 
+{
+	padding:10px;
+	list-style:none;
+}
+.ysidebar ul li
+{
+ font-size:14px !important;
+}
+/*////////end sidebars//////*/
+
+/*////////spans//////*/
+.ysgray
+{
+	color: white;
+    background-color: #93A6B1;
+	padding: 2px;
+}
+
+.pre_title
+{
+	color: #11b4e4;
+	margin-bottom: 5px;
+    display: block;
+
+}
+/*////////end spans//////*/
