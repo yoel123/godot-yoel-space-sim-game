@@ -108,4 +108,6 @@ mods, derived games, all distributed for free and credit is given to the origena
 
 contact form:
 
+https://yoelspacesim.wordpress.com/
+
 discord:
