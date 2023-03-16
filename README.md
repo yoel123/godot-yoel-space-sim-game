@@ -66,7 +66,7 @@ game designer: for balance and features, i have ideas but im not as knowledgeble
 as a game designer.
 
 level designer(godot): somone that knows how to use the godot editor, its a powerfull tool.
-in short with these tools and the modulare objects i built,ther is no need for code to 
+in short with these tools and the modular objects i built,ther is no need for code to 
 build levels.
 
 music and sound effects: the game has none as of now,if anyone wants to donate relvant assets,it would be 
