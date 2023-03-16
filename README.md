@@ -85,7 +85,7 @@ Team structure: in most cases each contributor will work on an "issue" be it cod
 when thier done they will do a pull request which i will review and then aprove/reject.
 
 Communication channels: a discord channel can be used for most day to day communications.
-i am also avialble on skype,whatsup and email.
+i am also available on skype,whatsup and email.
 
 Development process: i post an issue(usually a new feature), a contributor asks to be assinged to it,
 once the contributor resolves the issue he makes a pull request, if thers a problem its rejected,
