@@ -2,7 +2,7 @@ extends Spatial
 
 var ye = load("res://yframework.gd").new()
 var bullet = preload("res://bullet.tscn")
-var explotion  = preload("res://explotion.tscn")
+var explosion  = preload("res://explosion.tscn")
 var main_weapon = load("res://weapon.gd").new()
 
 

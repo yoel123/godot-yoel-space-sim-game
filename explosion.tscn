@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://explotion.gd" type="Script" id=1]
+[ext_resource path="res://explosion.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 vertex_color_use_as_albedo = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://bullet.gd" type="Script" id=1]
 [ext_resource path="res://yOmniLight.tscn" type="PackedScene" id=2]
@@ -9,50 +9,6 @@ albedo_color = Color( 81.81, 0, 0.44, 1 )
 [sub_resource type="CapsuleMesh" id=2]
 material = SubResource( 1 )
 
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-render_mode blend_premul_alpha;
-
-uniform float radius = 1.0;
-uniform float amount = 0.5;
-
-void fragment() {
-    float r = radius;
-    vec2 ps = TEXTURE_PIXEL_SIZE;
-    vec4 col = texture(TEXTURE, UV);
-    vec4 glow = col;
-
-    glow += texture(TEXTURE, UV + vec2(-r, -r) * ps);
-    glow += texture(TEXTURE, UV + vec2(-r, 0.0) * ps);
-    glow += texture(TEXTURE, UV + vec2(-r, r) * ps);
-    glow += texture(TEXTURE, UV + vec2(0.0, -r) * ps);
-    glow += texture(TEXTURE, UV + vec2(0.0, r) * ps);
-    glow += texture(TEXTURE, UV + vec2(r, -r) * ps);
-    glow += texture(TEXTURE, UV + vec2(r, 0.0) * ps);
-    glow += texture(TEXTURE, UV + vec2(r, r) * ps);
-
-    r *= 2.0;
-    glow += texture(TEXTURE, UV + vec2(-r, -r) * ps);
-    glow += texture(TEXTURE, UV + vec2(-r, 0.0) * ps);
-    glow += texture(TEXTURE, UV + vec2(-r, r) * ps);
-    glow += texture(TEXTURE, UV + vec2(0.0, -r) * ps);
-    glow += texture(TEXTURE, UV + vec2(0.0, r) * ps);
-    glow += texture(TEXTURE, UV + vec2(r, -r) * ps);
-    glow += texture(TEXTURE, UV + vec2(r, 0.0) * ps);
-    glow += texture(TEXTURE, UV + vec2(r, r) * ps);
-
-    glow /= 21.0;
-    glow *= amount;
-    col.rgb *= col.a;
-
-    COLOR = glow + col;
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/radius = 5.0
-shader_param/amount = 33.0
-
 [sub_resource type="BoxShape" id=3]
 
 [node name="bullet" type="Area"]
@@ -61,7 +17,7 @@ script = ExtResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -0.237, 0, 0, 0, 0.241, -4.72957e-08, 0, 2.10689e-08, 0.541, 0, 0, 0 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.083155, 0, 0, 0, 0.222256, 0, 0, 0, 0.850126, 0, 0, 0 )

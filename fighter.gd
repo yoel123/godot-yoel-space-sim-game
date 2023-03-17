@@ -2,7 +2,7 @@ extends KinematicBody
 
 var ye = load("res://yframework.gd").new()
 var bullet = preload("res://bullet.tscn")
-var explotion  = preload("res://explotion.tscn")
+var explosion  = preload("res://explosion.tscn")
 var main_weapon = load("res://weapon.gd").new()
 
 onready var enemy_pointer = $enemy_pointer
@@ -72,10 +72,10 @@ func take_dmg(hit):
 			$shieldmesh.visible=true #show shield mesh
 			if shield<=0:hp-=hit.dmg #if passed shields
 		else:hp-=hit.dmg #else reduce hull hp
-	#if dead do explotion
+	#if dead do explosion
 	if hp<=0:
 		dead = true
-		var boom = explotion.instance()
+		var boom = explosion.instance()
 		owner.add_child(boom)
 		boom.global_transform = self.global_transform
 		boom.explode()
