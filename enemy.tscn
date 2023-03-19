@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fighter.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://target_tracker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://targeting_helper.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PrismMesh" id=1]
 
@@ -135,3 +136,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.45823 )
 
 [node name="gun2" type="Position3D" parent="guns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69624, 0, -6.45823 )
+
+[node name="targeting_helper" parent="." instance=ExtResource( 4 )]
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
