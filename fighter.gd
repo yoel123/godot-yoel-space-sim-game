@@ -17,7 +17,8 @@ var shield = 20
 var shield_timer = 2
 var shield_timer_count = 0
 
-var speed = 35
+var max_speed = 35
+var speed = 0
 var rotate_speed = 0.5
 var velocity
 
@@ -30,6 +31,8 @@ var rnd_targ_reached
 var dead
 
 var state ="move_random"#chase"
+
+onready var trail = $trails.get_child(0)
 
 export var team = 2
 
@@ -45,11 +48,11 @@ func _ready():
 		material.albedo_color = Color(1, 0.63, 0.2)
 		modal.set_surface_material(3,material)
 		$target_tracker/Sprite.modulate  =  Color(0, 1, 0)
-		print(enemy_pointer.get_node("tex").modulate)
 	pass #end ready
 
 
 func _process(delta):
+	trail.trails_handle(self,speed)
 	pass #end process
 
 func _physics_process(delta):
@@ -130,54 +133,59 @@ func move(delta):
 	"""
 	#move twords target if close continue flying (dont run into target 
 	#and get behind target)
-	if targ && is_instance_valid(targ):
-		
-		#look_at(targ.global_transform.origin,Vector3.UP) #look at target pld
+	
+	#check if target is valid
+	if targ != null && !is_instance_valid(targ):
+		speed = 0
+		return
+	else:speed = max_speed
+	
+	#do movment state		
 
-		#####move to random pos######
-		if state =="move_random":
-			#set random targ
-			if rnd_targ_reached || !rnd_targ:
-				#reset target reached
-				rnd_targ_reached = false
-				#reset random target to new target
-				rng.randomize()
-				rnd_targ = Vector3(rng.randi_range(-150,150),rng.randi_range(-150,150),rng.randi_range(-150,150))
-				#add target position to random pos (so you get a random position around the target)
-				rnd_targ = rnd_targ + targ.global_transform.origin
-				pass
-			#distance from random target	
-			var dist = ye.dist_3dvt(self,rnd_targ)
-			#if team ==1:print(dist," ",rnd_targ)
-			#if reached close to random target
-			if dist < 40:
-				rnd_targ_reached=true	
-				state ="chase"	
-			#rotate to target
-			look_at_slow(delta,rnd_targ)
-			#old movment
-			#var dir = (rnd_targ - transform.origin).normalized()
-			#move_and_collide(dir*speed *delta)
-			pass	
-				
-		#######chase target######
-		if state =="chase":
-			
-			#if too close evade
-			var dist = ye.dist_3d(self,targ)
-			if dist < 40:state ="move_random"
-			
-			#rotate to target
-			look_at_slow(delta,targ.global_transform.origin)
-			#if team ==1:print(targ.global_transform.origin)
-			#old movment
-			#var dir = (targ.transform.origin - transform.origin).normalized()
-			#move_and_collide((dir*speed) *delta)
+	#####move to random pos######
+	if state =="move_random":
+		#set random targ
+		if rnd_targ_reached || !rnd_targ:
+			#reset target reached
+			rnd_targ_reached = false
+			#reset random target to new target
+			rng.randomize()
+			rnd_targ = Vector3(rng.randi_range(-150,150),rng.randi_range(-150,150),rng.randi_range(-150,150))
+			#add target position to random pos (so you get a random position around the target)
+			rnd_targ = rnd_targ + targ.global_transform.origin
 			pass
-		#enemy velocity (move forward
-		velocity = -transform.basis.z * speed
-		#move
-		move_and_collide(velocity * delta)
+		#distance from random target	
+		var dist = ye.dist_3dvt(self,rnd_targ)
+		#if team ==1:print(dist," ",rnd_targ)
+		#if reached close to random target
+		if dist < 40:
+			rnd_targ_reached=true	
+			state ="chase"	
+		#rotate to target
+		look_at_slow(delta,rnd_targ)
+		#old movment
+		#var dir = (rnd_targ - transform.origin).normalized()
+		#move_and_collide(dir*speed *delta)
+		pass	
+			
+	#######chase target######
+	if state =="chase":
+		
+		#if too close evade
+		var dist = ye.dist_3d(self,targ)
+		if dist < 40:state ="move_random"
+		
+		#rotate to target
+		look_at_slow(delta,targ.global_transform.origin)
+		#if team ==1:print(targ.global_transform.origin)
+		#old movment
+		#var dir = (targ.transform.origin - transform.origin).normalized()
+		#move_and_collide((dir*speed) *delta)
+		pass
+	#enemy velocity (move forward
+	velocity = -transform.basis.z * speed
+	#move
+	move_and_collide(velocity * delta)
 		
 	pass #end move
 

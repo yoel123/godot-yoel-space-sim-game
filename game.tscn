@@ -19,10 +19,14 @@ ambient_light_color = Color( 0.964706, 0.960784, 0.984314, 1 )
 ambient_light_sky_contribution = 0.0
 fog_depth_begin = 3.0
 glow_enabled = true
-glow_intensity = 1.0
-glow_strength = 0.95
-glow_bloom = 0.15
+glow_levels/4 = true
+glow_levels/5 = false
+glow_intensity = 1.12
+glow_strength = 0.4
+glow_bloom = 0.14
 glow_blend_mode = 0
+glow_hdr_threshold = 1.04
+glow_bicubic_upscale = true
 
 [node name="game" type="Spatial"]
 script = ExtResource( 4 )

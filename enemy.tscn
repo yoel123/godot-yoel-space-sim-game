@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fighter.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://trail.tscn" type="PackedScene" id=2]
 [ext_resource path="res://target_tracker.tscn" type="PackedScene" id=3]
 [ext_resource path="res://targeting_helper.tscn" type="PackedScene" id=4]
 
@@ -115,18 +115,6 @@ visible = false
 mesh = SubResource( 9 )
 material/0 = null
 
-[node name="enemy_pointer" type="Node2D" parent="."]
-visible = false
-
-[node name="tex" type="TextureRect" parent="enemy_pointer"]
-modulate = Color( 1, 0, 0, 1 )
-margin_right = 64.0
-margin_bottom = 64.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="target_tracker" parent="." instance=ExtResource( 3 )]
 
 [node name="guns" type="Spatial" parent="."]
@@ -140,3 +128,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69624, 0, -6.45823 )
 [node name="targeting_helper" parent="." instance=ExtResource( 4 )]
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[node name="trails" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251392, -0.184495, -1.11764 )
+
+[node name="trail" parent="trails" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80342, 1.52638, 5.44028 )
+
+[node name="trail2" parent="trails" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.593889, 1.52638, 5.44028 )

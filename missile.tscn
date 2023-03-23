@@ -107,3 +107,4 @@ material/3 = null
 [node name="OmniLight" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 light_color = Color( 0.933333, 0.137255, 0.137255, 1 )
+light_energy = 2.0

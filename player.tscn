@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/OBJ format/craft_speederA.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://trail.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.07356, 0.700681, 1.86723 )
@@ -96,6 +97,16 @@ transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.836, 1.251, -21.715 )
 mesh = SubResource( 5 )
 material/0 = null
 
+[node name="target5" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.019, 1.251, -60.3699 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="target6" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.836, 1.251, -60.3699 )
+mesh = SubResource( 5 )
+material/0 = null
+
 [node name="target2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74908, -22.0173 )
 
@@ -114,3 +125,12 @@ transform = Transform( 4.3, 0, 0, 0, 4.211, 0, 0, 0, 5.457, 0, 0, 0 )
 visible = false
 mesh = SubResource( 9 )
 material/0 = null
+
+[node name="trails" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251392, -0.184495, -1.11764 )
+
+[node name="trail" parent="trails" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80342, 1.52638, 5.44028 )
+
+[node name="trail2" parent="trails" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.593889, 1.52638, 5.44028 )

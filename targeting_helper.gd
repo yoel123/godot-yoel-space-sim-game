@@ -17,7 +17,7 @@ func _process(delta):
 	var enemy_position = enemy.global_transform.origin + enemy.velocity
 	
 	# Calculate the direction from the player to the enemy
-	var direction = enemy_position #- player_position
+	var direction = enemy_position - player_position
 	direction = direction.normalized()
 	
 	# Calculate the position of the indicator sprite
@@ -27,6 +27,7 @@ func _process(delta):
 	position = get_viewport().get_camera().unproject_position(indicator_position)
 
 	# Check if the enemy node has the VisibilityNotifier node attached
+	#and that its on screen,if not hide indicator
 	if enemy.has_node("VisibilityNotifier") and enemy.get_node("VisibilityNotifier").is_on_screen():
 		visible = true
 	else:

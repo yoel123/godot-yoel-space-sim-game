@@ -35,6 +35,8 @@ var team = 1
 
 var targ
 
+onready var trail = $trails.get_child(0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("player")
@@ -43,6 +45,7 @@ func _ready():
 
 func _process(delta):
 	point_to_target() 
+	trail.trails_handle(self,forward_speed)
 	pass
 
 func _physics_process(delta):
@@ -50,6 +53,8 @@ func _physics_process(delta):
 	
 	velocity = -transform.basis.z * forward_speed
 	move_and_collide(velocity * delta)
+#end _physics_process
+
 
 func get_input(delta):
 	
