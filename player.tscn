@@ -55,12 +55,12 @@ mesh = SubResource( 2 )
 transform = Transform( -1, 2.27899e-09, 8.73931e-08, -8.70602e-08, 0.0649887, -0.997886, -7.95374e-09, -0.997886, -0.0649887, -0.154922, 1.08412, 1.18768 )
 shape = SubResource( 3 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera_Ext" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 10, 20 )
 current = true
 far = 771.6
 
-[node name="Camera2" type="Camera" parent="."]
+[node name="Camera_Pilot" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1 )
 far = 771.6
 

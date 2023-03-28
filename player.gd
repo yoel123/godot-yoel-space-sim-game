@@ -86,10 +86,10 @@ func get_input(delta):
 	
 	# If camera toggle pressed once (to avoid repeat presses) 
 	if Input.is_action_just_pressed("camera_toggle"):
-		if ($Camera.current == true):
-			$Camera2.current = true
+		if ($Camera_Ext.current == true):
+			$Camera_Pilot.current = true
 		else:
-			$Camera.current = true
+			$Camera_Ext.current = true
 #end get_input
 	
 func take_dmg(hit):
