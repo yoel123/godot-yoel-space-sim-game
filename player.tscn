@@ -114,10 +114,10 @@ visible = false
 mesh = SubResource( 9 )
 
 [node name="trails" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251392, -0.184495, -1.11764 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.184, -1.118 )
 
 [node name="trail" parent="trails" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80342, 1.52638, 5.44028 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.1, 5.5 )
 
 [node name="trail2" parent="trails" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.593889, 1.52638, 5.44028 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 1.2, 5.5 )
