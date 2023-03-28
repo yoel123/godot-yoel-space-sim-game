@@ -16,4 +16,5 @@ dest_files=[ "res://.import/weapon_gun.obj-88cf443445676e470144722d6fea0de3.mesh
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286
