@@ -72,7 +72,7 @@ func get_input(delta):
 		#forward_speed = lerp(forward_speed, -max_speed, acceleration * delta)
 	
 	#compare target speed
-	if Input.is_action_pressed("c") && is_instance_valid(targ):
+	if Input.is_action_pressed("match_speed") && is_instance_valid(targ):
 		forward_speed = targ.speed
 		if forward_speed > max_speed:forward_speed = max_speed
 	#shot
