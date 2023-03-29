@@ -46,6 +46,11 @@ func _ready():
 func _process(delta):
 	point_to_target() 
 	trail.trails_handle(self,forward_speed)
+	
+	# Send data to HUD
+	
+	# Throttle as percentage of max speed
+	$HUD_V1.value_throttle = forward_speed / max_speed * 100
 	pass
 
 func _physics_process(delta):
