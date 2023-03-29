@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/OBJ format/craft_speederA.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
 [ext_resource path="res://trail.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD_V1.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.07356, 0.700681, 1.86723 )
@@ -121,3 +122,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.1, 5.5 )
 
 [node name="trail2" parent="trails" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 1.2, 5.5 )
+
+[node name="HUD_V1" parent="." instance=ExtResource( 4 )]
