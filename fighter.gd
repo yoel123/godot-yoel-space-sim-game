@@ -54,6 +54,7 @@ func _ready():
 
 func _process(delta):
 	trail.trails_handle(self,speed)
+	main_weapon.update(delta)
 	pass #end process
 
 func _physics_process(delta):

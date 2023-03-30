@@ -19,7 +19,7 @@ var hp = 10
 
 var yrange = 3000
 
-var guns
+onready var guns = $guns
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +31,7 @@ func _ready():
 func _process(delta):
 	if check_targ_not_exist():get_target()
 	shot(delta)
+	main_weapon.update(delta)
 #end _process
 
 func _physics_process(delta):
@@ -66,16 +67,6 @@ func get_target():
 	for ship in big_ships:
 		var dist = ye.dist_3d(self,ship)
 		if dist<= yrange && team !=ship.team:targ = ship
-	pass
-		#print(targ)
-	#for now aim at player
-	"""
-	if team == 2:
-		#search for player
-		var yplayers = ye.get_by_type(self,"player") 
-		if yplayers and yplayers[0]:
-			 targ = yplayers[0] #set player as target
-	"""	
 	pass
 #end get target
 
@@ -116,8 +107,9 @@ func set_turret_type(ytype="laser_gun"):
 	if type =="laser_gun":
 		#pass this obj refrence to weapon and fire rate
 		main_weapon.yinit(self,0.5,true) 
-	
-		guns = $laser_gun/guns
+		main_weapon.max_ammo = 200
+		main_weapon.reload()
+		
 	
 	
 	pass

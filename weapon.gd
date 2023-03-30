@@ -16,8 +16,12 @@ var is_ai
 
 #if the weapon uses ammo
 var uses_ammo
-var max_ammo = 5
-var ammo = 5
+var max_ammo = 50
+var ammo = 50
+
+var recharge_rate = 0.5
+var recharge_counter = 0
+
 
 func _ready():
 
@@ -51,6 +55,10 @@ func can_shot(delta,button):
 
 func make_bullet(gun):
 	
+	#no ammo? exit
+	if ammo<=0:return
+	ammo-=1 #reduce 1 ammo per bullet made/shot
+	
 	#help ai aim at target
 	if is_ai:aim_gun(gun)
 	var b
@@ -58,7 +66,7 @@ func make_bullet(gun):
 	if(weapon_name =="normal"): b = bullet.normal(self,gun)
 	if(weapon_name =="missile"): b = bullet.guided_missile(self,gun)
 	
-	if uses_ammo: ammo-=1
+
 	
 	return b
 	pass
@@ -74,6 +82,22 @@ func aim_gun(gun):
 
 func reload():ammo = max_ammo
 
+func recharge(delta):
+	#if dosnt use ammo and has less then max ammo
+	if (!uses_ammo || uses_ammo==null) && ammo==max_ammo:return
+	
+	#when recharge rate timer is done
+	recharge_counter += delta
+	if recharge_counter>recharge_rate:
+		recharge_counter=0
+		ammo+=1 #add 1 ammo
+		print("in")
+	
+	pass
+#end recharge
+	
+func update(delta):
+	recharge(delta)
 
 func set_weapon_stats_by_name(name):
 	
