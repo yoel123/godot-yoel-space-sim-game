@@ -1,6 +1,9 @@
 extends Area
 
+var ye = load("res://yframework.gd").new()
+
 var speed = 150
+
 var life_timer = 2
 var life_counter = 0
 
@@ -32,6 +35,5 @@ func _physics_process(delta):
 	
 	#life timer (remove when ends)
 	life_counter+=delta
-	if life_counter>life_timer: queue_free()
-		
+	if life_counter>life_timer: queue_free()	
 

@@ -110,8 +110,35 @@ func look_at_slow(that,delta,targ,rotate_speed):
 	global_transform.basis.z=lerp(global_transform.basis.z, T.basis.z, delta*rotate_speed)
 	that.global_transform = global_transform
 	pass #end look_at_slow
+func look_at_slowv(that,delta,targ,rotate_speed):
+	var global_transform = that.global_transform
+	var T=that.global_transform.looking_at(targ, Vector3(0,1,0))
+	global_transform.basis.y=lerp(global_transform.basis.y, T.basis.y, delta*rotate_speed)
+	global_transform.basis.x=lerp(global_transform.basis.x, T.basis.x, delta*rotate_speed)
+	global_transform.basis.z=lerp(global_transform.basis.z, T.basis.z, delta*rotate_speed)
+	that.global_transform = global_transform
+	pass #end look_at_slow
+
 	
 func get_scene_by_name(that,name):
 	#return that.find_node_by_name(that.get_tree().get_root(),name)
 	return that.get_tree().get_root().find_node(name, true, false)
 
+
+################life_timer##################
+class life_timer:
+	var life_counter = 0
+	var life_timer = 0
+	
+	func _init(timer):
+		life_timer = timer
+	
+	func set_timer(timer):
+		life_timer = timer
+	
+	func update_timer(that,delta):
+		life_counter += delta
+		if life_counter > life_timer:
+			that.queue_free()
+			return true
+################end life_timer##################

@@ -41,6 +41,7 @@ onready var trail = $trails.get_child(0)
 func _ready():
 	add_to_group("player")
 	main_weapon.that = self#pass this obj refrence to weapon
+	main_weapon.weapon_name ="missile"
 	pass # Replace with function body.
 
 func _process(delta):
@@ -76,7 +77,7 @@ func get_input(delta):
 		forward_speed = targ.speed
 		if forward_speed > max_speed:forward_speed = max_speed
 	#shot
-	if main_weapon.can_shot(delta):
+	if main_weapon.can_shot(delta,"fire"):
 		#shot all guns
 		for gun in $guns.get_children():
 			#create shot

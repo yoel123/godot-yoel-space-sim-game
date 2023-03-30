@@ -21,11 +21,11 @@ fog_depth_begin = 3.0
 glow_enabled = true
 glow_levels/4 = true
 glow_levels/5 = false
-glow_intensity = 1.12
-glow_strength = 0.4
-glow_bloom = 0.14
+glow_intensity = 1.53
+glow_strength = 0.71
+glow_bloom = 0.19
 glow_blend_mode = 0
-glow_hdr_threshold = 1.04
+glow_hdr_threshold = 0.0
 glow_bicubic_upscale = true
 
 [node name="game" type="Spatial"]

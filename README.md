@@ -19,10 +19,13 @@ for pricing its meant to be free, even projects derived from the main one must b
 
 ## support/donations/sponsorship
 
-i myself have donated a lot of work time for this project already and anywhere between 2-3k dollars i put aside for "bounties" for important features.
+as of now im the only contributor to this project in terms of work time and money (i put some money aside for bounties and other stuff the project will need).
+
 for now there is no option to donate if your interested contact me.
 
-why donate? simple reason, you want a feature implemented and someone to code it (its too early for that and will require contacting me).
+why donate? simple reason, you like the project and want it to get devloped.
+you want a feature implemented and someone to code it (its too early for that and will require contacting me).
+
 
 the big donation this project needs is at least 2-3 serious programmers. art 2d/3d ,story,sound effects,music etc will also be very helpful.
 
@@ -43,7 +46,7 @@ i do hope people will use this project to create free games other people can pla
 
 ## bounties 
 
-for resolving issues (some of them)/developing features there will be a symbolic monetary "prize"/"compensation", I decide if to approve any pull request.
+for resolving issues (some of them,some wont have bounties)/developing features there will be a symbolic monetary "prize"/"compensation", I decide if to approve any pull request.
 this is not "payment" don't relay or expect it to be something like that.
 a bounty is given when an issue is resolved. if its no good you won't get it ( I did something like this before and people submitted unusable code).
 you will need to contribute on at least 1 issue before you can do a bounty.

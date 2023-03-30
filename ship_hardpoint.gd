@@ -89,7 +89,7 @@ func shot(delta):
 	
 	if main_weapon.can_shot_ai(delta):
 		for gun in guns.get_children():
-			var b = main_weapon.make_bullet_ai(gun)
+			var b = main_weapon.make_bullet(gun)
 #end shot
 func take_dmg(dmg):
 	pass
@@ -115,7 +115,7 @@ func set_turret_type(ytype="laser_gun"):
 	
 	if type =="laser_gun":
 		#pass this obj refrence to weapon and fire rate
-		main_weapon.yinit(self,0.5) 
+		main_weapon.yinit(self,0.5,true) 
 	
 		guns = $laser_gun/guns
 	
