@@ -24,9 +24,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Data/ProgressBar_Hull.value = value_hull
-	$Data/ProgressBar_Shield.value = value_shield
-	$Data/ProgressBar_Throttle.value = value_throttle
+	# Set ProgressBar values
+	$Data_Ship/ProgressBar_Hull.value = value_hull
+	$Data_Ship/ProgressBar_Shield.value = value_shield
+	$Data_Controls/ProgressBar_Throttle.value = value_throttle
 	
 	# If buttons are pressed, trigger event
 	# Parse generated event
@@ -34,7 +35,7 @@ func _process(delta):
 	button_camera_event.action = "camera_toggle"
 	
 	# If pressed, set event to true
-	if ($Buttons/Button_Camera.pressed == true):
+	if ($Data_Buttons/Button_Camera.pressed == true):
 		button_camera_event.pressed = true
 	# If not pressed, set to false
 	else:
