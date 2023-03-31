@@ -62,7 +62,7 @@ current = true
 far = 771.6
 
 [node name="Camera_Pilot" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.46985 )
 far = 771.6
 
 [node name="guns" type="Spatial" parent="."]

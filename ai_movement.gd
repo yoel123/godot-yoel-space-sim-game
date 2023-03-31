@@ -35,7 +35,9 @@ func move_to_random_pos(that,delta,rng,distance_from_targ):
 
 #change rotation towerds a target slow
 func follow(that,delta,dist_to_evade):
-			
+	
+	if !that.targ || that.targ ==null:return
+	
 	#if too close evade
 	var dist = ye.dist_3d(that,that.targ)
 	if dist < dist_to_evade:return true

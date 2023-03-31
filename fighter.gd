@@ -13,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 var max_hp = 3
 var hp = 3
 
-var max_shield = 10
+var max_shield = 20
 var shield = 20
 var shield_timer = 2
 var shield_timer_count = 0
@@ -121,18 +121,7 @@ func set_target():
 	
 
 func move(delta):
-	if targ == null:return
-	#set player as target for now
-	"""
-	if targ == null:
-		
-		#search for enemy ships
-		
-		#search for player
-		var yplayers = ye.get_by_type(self,"player") 
-		if yplayers and yplayers[0]:
-			 targ = yplayers[0] #set player as target
-	"""
+
 	#move twords target if close continue flying (dont run into target 
 	#and get behind target)
 	
@@ -191,6 +180,14 @@ func shot(delta):
 			var b = main_weapon.make_bullet(gun)
 			
 	pass #end shot
+
+func get_hull_and_shield():
+	var hull_get = float(hp)/max_hp *100
+	var shilds_get = float(shield)/max_shield *100
+	
+	return[hull_get,shilds_get]
+	
+	pass#end get_hud_and_shield
 
 
 
