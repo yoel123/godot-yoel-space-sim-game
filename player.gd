@@ -47,10 +47,7 @@ func _process(delta):
 	point_to_target() 
 	trail.trails_handle(self,forward_speed)
 	
-	# Send data to HUD
-	
-	# Throttle as percentage of max speed
-	$HUD_V1.value_throttle = forward_speed / max_speed * 100
+
 	pass
 
 func _physics_process(delta):
@@ -91,7 +88,7 @@ func get_input(delta):
 	
 	# If camera toggle pressed once (to avoid repeat presses) 
 	if Input.is_action_just_pressed("camera_toggle"):
-		if ($Camera_Ext.current == true):
+		if ($Camera_Ext.current):
 			$Camera_Pilot.current = true
 		else:
 			$Camera_Ext.current = true
@@ -174,7 +171,10 @@ func point_to_target() :
 		$target2/tri.visible = false
 		
 	pass #end  point_to_target
-	
+
+
+func get_throttle(): return float(forward_speed) / max_speed * 100
+
 func _get_mouse_speed() -> Vector2:
 	
 	var screen_center = get_viewport().size * 0.5
