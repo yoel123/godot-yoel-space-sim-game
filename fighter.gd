@@ -1,7 +1,6 @@
 extends KinematicBody
 
 var ye = load("res://yframework.gd").new()
-var ai_movement = load("res://ai_movement.gd").new()
 var bullet = preload("res://bullet.tscn")
 var explosion  = preload("res://explosion.tscn")
 var main_weapon = load("res://weapon.gd").new()
@@ -42,7 +41,7 @@ onready var modal = $modal
 func _ready():
 	add_to_group("enemy")
 	#pass this obj refrence to weapon and fire rate
-	main_weapon.yinit(self,0.5,true) 
+	main_weapon.yinit(self,0.5) 
 
 	if team ==1:
 		var material = SpatialMaterial.new()
@@ -54,7 +53,6 @@ func _ready():
 
 func _process(delta):
 	trail.trails_handle(self,speed)
-	main_weapon.update(delta)
 	pass #end process
 
 func _physics_process(delta):
@@ -146,21 +144,48 @@ func move(delta):
 
 	#####move to random pos######
 	if state =="move_random":
-
+		#set random targ
+		if rnd_targ_reached || !rnd_targ:
+			#reset target reached
+			rnd_targ_reached = false
+			#reset random target to new target
+			rng.randomize()
+			rnd_targ = Vector3(rng.randi_range(-150,150),rng.randi_range(-150,150),rng.randi_range(-150,150))
+			#add target position to random pos (so you get a random position around the target)
+			rnd_targ = rnd_targ + targ.global_transform.origin
+			pass
+		#distance from random target	
+		var dist = ye.dist_3dvt(self,rnd_targ)
+		#if team ==1:print(dist," ",rnd_targ)
 		#if reached close to random target
-		if  ai_movement.move_to_random_pos(self,delta,rng,40):
+		if dist < 40:
 			rnd_targ_reached=true	
 			state ="chase"	
-
+		#rotate to target
+		look_at_slow(delta,rnd_targ)
+		#old movment
+		#var dir = (rnd_targ - transform.origin).normalized()
+		#move_and_collide(dir*speed *delta)
 		pass	
 			
 	#######chase target######
 	if state =="chase":
-		#foolow if too close change to move random
-		if  ai_movement.follow(self,delta,40):state ="move_random"
+		
+		#if too close evade
+		var dist = ye.dist_3d(self,targ)
+		if dist < 40:state ="move_random"
+		
+		#rotate to target
+		look_at_slow(delta,targ.global_transform.origin)
+		#if team ==1:print(targ.global_transform.origin)
+		#old movment
+		#var dir = (targ.transform.origin - transform.origin).normalized()
+		#move_and_collide((dir*speed) *delta)
 		pass
-	
-	ai_movement.move_forwerd(self,delta,speed)
+	#enemy velocity (move forward
+	velocity = -transform.basis.z * speed
+	#move
+	move_and_collide(velocity * delta)
 		
 	pass #end move
 
@@ -188,10 +213,18 @@ func shot(delta):
 		#fire all guns
 		for gun in $guns.get_children():
 			#create shot
-			var b = main_weapon.make_bullet(gun)
+			var b = main_weapon.make_bullet_ai(gun)
 			
 	pass #end shot
 
+
+func get_hull_and_shield():
+	var hull_get = float(hp)/max_hp *100
+	var shilds_get = float(shield)/max_shield *100
+	
+	return[hull_get,shilds_get]
+	
+	pass#end get_hud_and_shield
 
 
 #smooth look at rotation (targ aka target and rotate_speed are needed to be set befor use)
