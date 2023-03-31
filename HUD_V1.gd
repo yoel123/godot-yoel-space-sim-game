@@ -5,9 +5,9 @@ extends Control
 # var a = 2
 # var b = "text"
 
-var value_hull : float = 0
-var value_shield : float = 0
-var value_throttle : float = 0
+var value_ownship_hull : float = 0
+var value_ownship_shield : float = 0
+var value_ownship_throttle : float = 0
 
 # Setup camera button
 var button_camera_event = InputEventAction.new()
@@ -15,19 +15,23 @@ var button_camera_event = InputEventAction.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Initialise dummy values (not functional yet)
-	value_hull = 100
-	value_shield = 50
-	value_throttle = 70
+	value_ownship_hull = 100
+	value_ownship_shield = 50
+	value_ownship_throttle = 70
 	
 	pass # Replace with function body.
+
+func _update_hud():
+	# Set ProgressBar values
+	$Data_Ship/ProgressBar_Hull.value = value_ownship_hull
+	$Data_Ship/ProgressBar_Shield.value = value_ownship_shield
+	$Data_Controls/ProgressBar_Throttle.value = value_ownship_throttle
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# Set ProgressBar values
-	$Data_Ship/ProgressBar_Hull.value = value_hull
-	$Data_Ship/ProgressBar_Shield.value = value_shield
-	$Data_Controls/ProgressBar_Throttle.value = value_throttle
+	_update_hud()
 	
 	# If buttons are pressed, trigger event
 	# Parse generated event

@@ -48,6 +48,7 @@ func _process(delta):
 	point_to_target() 
 	trail.trails_handle(self,forward_speed)
 	main_weapon.update(delta)
+	send_data_to_hud()
 	pass
 
 func _physics_process(delta):
@@ -191,3 +192,11 @@ func ynormalize( vec:Vector3 ):
 		newVec  = Vector3.UP #or whatever is your default
 	return newVec
 
+func send_data_to_hud():
+#	Sends data on ship to HUD node
+	
+	
+#	$HUD_V1.value_ownship_shield = 100
+#	$HUD_V1.value_ownship_hull = 100
+	$HUD_V1.value_ownship_throttle = forward_speed / max_speed * 100
+	
