@@ -16,4 +16,5 @@ dest_files=[ "res://.import/platform_smallDiagonal.obj-89bb413da88c42c2edffb5e00
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286

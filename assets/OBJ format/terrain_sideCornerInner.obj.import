@@ -16,4 +16,5 @@ dest_files=[ "res://.import/terrain_sideCornerInner.obj-a6df14e06f046d7e61a1a70e
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -48,6 +48,7 @@ func _process(delta):
 	point_to_target() 
 	trail.trails_handle(self,forward_speed)
 	main_weapon.update(delta)
+	send_data_to_hud()
 	pass
 
 func _physics_process(delta):
@@ -74,7 +75,7 @@ func get_input(delta):
 		#forward_speed = lerp(forward_speed, -max_speed, acceleration * delta)
 	
 	#compare target speed
-	if Input.is_action_pressed("c") && is_instance_valid(targ):
+	if Input.is_action_pressed("match_speed") && is_instance_valid(targ):
 		forward_speed = targ.speed
 		if forward_speed > max_speed:forward_speed = max_speed
 	#shot
@@ -85,6 +86,13 @@ func get_input(delta):
 			main_weapon.make_bullet(gun)
 		pass
 	pass
+	
+	# If camera toggle pressed once (to avoid repeat presses) 
+	if Input.is_action_just_pressed("camera_toggle"):
+		if ($Camera_Ext.current):
+			$Camera_Pilot.current = true
+		else:
+			$Camera_Ext.current = true
 #end get_input
 	
 func take_dmg(hit):
@@ -164,7 +172,10 @@ func point_to_target() :
 		$target2/tri.visible = false
 		
 	pass #end  point_to_target
-	
+
+
+func get_throttle(): return float(forward_speed) / max_speed * 100
+
 func _get_mouse_speed() -> Vector2:
 	
 	var screen_center = get_viewport().size * 0.5
@@ -181,3 +192,11 @@ func ynormalize( vec:Vector3 ):
 		newVec  = Vector3.UP #or whatever is your default
 	return newVec
 
+func send_data_to_hud():
+#	Sends data on ship to HUD node
+	
+	
+#	$HUD_V1.value_ownship_shield = 100
+#	$HUD_V1.value_ownship_hull = 100
+	$HUD_V1.value_ownship_throttle = forward_speed / max_speed * 100
+	

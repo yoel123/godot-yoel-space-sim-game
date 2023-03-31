@@ -16,4 +16,5 @@ dest_files=[ "res://.import/terrain_side.obj-78e13a5a6d4a2d52058d9484990acc02.me
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -16,4 +16,5 @@ dest_files=[ "res://.import/corridor_end.obj-d7bd5b3a141ca161637dcf66d24bee92.me
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286
