@@ -14,6 +14,10 @@ onready var Data_Target = $Data_Target
 onready var ProgressBar_Hull = $Data_Target/ProgressBar_Hull
 onready var ProgressBar_Shield = $Data_Target/ProgressBar_Shield
 
+onready var Data_Controls = $Data_Controls
+onready var ProgressBar_WPN1 = $Data_Controls/ProgressBar_WPN1
+
+
 var player
 
 
@@ -32,7 +36,14 @@ func _process(delta):
 	_update_hud()
 	
 	update_target_stats()
-	
+
+	cam_btn_clicked()
+	pass
+#end process
+
+func cam_btn_clicked():
+		
+	#||||||||||basicly simulate keyboard key to change cam view when cam btn is clicked
 	# If buttons are pressed, trigger event
 	# Parse generated event
 	Input.parse_input_event(button_camera_event)
@@ -44,8 +55,8 @@ func _process(delta):
 	# If not pressed, set to false
 	else:
 		button_camera_event.pressed = false
-#end process
-
+	pass
+#end cam_btn_clicked
 
 func update_target_stats():
 	
@@ -71,6 +82,9 @@ func _update_hud():
 		var players = ye.get_by_type(self,"player")
 		if players[0]:player =players[0] 
 	
+	if !is_instance_valid(player):return
+	
+	ProgressBar_WPN1.value = player.main_weapon.get_ammo_hud()
 	
 	# Set ProgressBar values
 	$Data_Ship/ProgressBar_Hull.value = value_ownship_hull

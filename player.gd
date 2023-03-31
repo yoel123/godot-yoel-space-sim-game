@@ -175,6 +175,7 @@ func point_to_target() :
 
 func get_throttle(): return float(forward_speed) / max_speed * 100
 
+
 func _get_mouse_speed() -> Vector2:
 	
 	var screen_center = get_viewport().size * 0.5

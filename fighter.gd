@@ -21,7 +21,7 @@ var shield_timer_count = 0
 var max_speed = 35
 var speed = 0
 var rotate_speed = 0.5
-var velocity
+var velocity = Vector3.ZERO
 
 var targ_old
 var targ
@@ -122,11 +122,12 @@ func set_target():
 
 func move(delta):
 
+	
 	#move twords target if close continue flying (dont run into target 
 	#and get behind target)
-	
+	print(targ)
 	#check if target is valid
-	if targ != null && !is_instance_valid(targ):
+	if !targ || targ == null || !is_instance_valid(targ):
 		speed = 0
 		return
 	else:speed = max_speed

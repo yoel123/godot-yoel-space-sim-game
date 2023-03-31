@@ -91,10 +91,12 @@ func recharge(delta):
 	if recharge_counter>recharge_rate:
 		recharge_counter=0
 		ammo+=1 #add 1 ammo
-		print("in")
+
 	
 	pass
 #end recharge
+	
+func get_ammo_hud(): return float(ammo)/max_ammo *100
 	
 func update(delta):
 	recharge(delta)

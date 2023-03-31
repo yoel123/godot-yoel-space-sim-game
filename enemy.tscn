@@ -90,7 +90,6 @@ script = ExtResource( 1 )
 transform = Transform( -1.59113, -1.38524e-07, -1.26555e-08, 0, 0.12285, -1.3447, 1.53724e-07, -1.75111, -0.159979, 0, 0, 0 )
 visible = false
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1.59113, 0, 0, 0, 1.3503, 0, 0, 0, 1.7584, 0, 0, 0 )
@@ -104,16 +103,11 @@ shape = SubResource( 2 )
 [node name="modal" type="MeshInstance" parent="."]
 transform = Transform( -3.99175, 0, -0.256736, 0, 4, 0, 0.256736, 0, -3.99175, 0, 0, 0 )
 mesh = SubResource( 7 )
-material/0 = null
-material/1 = null
-material/2 = null
-material/3 = null
 
 [node name="shieldmesh" type="MeshInstance" parent="."]
 transform = Transform( 3.32506, 0, 0, 0, 4.21069, 0, 0, 0, 5.45691, 0, 0, 0 )
 visible = false
 mesh = SubResource( 9 )
-material/0 = null
 
 [node name="target_tracker" parent="." instance=ExtResource( 3 )]
 

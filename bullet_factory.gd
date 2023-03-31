@@ -21,12 +21,14 @@ func normal(that,gun):
 
 func guided_missile(that,gun):
 	
+	#that is the weapon, that.that is the weapons parent 
+	
 	if !that.that.targ:return
 	#get weapon owner target
 	var targ = that.that.targ
 	
 	var m =missile.instance()
-	that.that.owner.add_child(m) #add to level
+	that.that.get_tree().get_root().add_child(m) #add to level
 	m.global_transform = gun.global_transform #put at gun pos
 	m.dmg = that.dmg
 	m.targ = targ

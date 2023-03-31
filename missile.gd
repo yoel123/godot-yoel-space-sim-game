@@ -26,7 +26,7 @@ func _physics_process(delta):
 	
 	move(delta)
 	
-	
+	print(self.get_parent())
 	#get overlapping areas if any
 	var hit = $Area.get_overlapping_areas()
 	
@@ -35,13 +35,15 @@ func _physics_process(delta):
 		#get the first one
 		hit = hit[0].get_parent()
 		
+		if !"team" in hit: return
+		
 		#dont hit self
 		if hit.team && hit.team == team:return
 		
 		#check if the object has method take dmg 
 		#if so use it and pass this object 
 		if(hit.has_method("take_dmg")): hit.take_dmg(self)
-		queue_free() #remove self
+		#queue_free() #remove self
 		#print("hit")
 	
 	
