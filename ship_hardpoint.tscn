@@ -18,32 +18,20 @@ script = ExtResource( 1 )
 [node name="placeholder" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.00708592, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="laser_gun" type="Spatial" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="laser_gun"]
 transform = Transform( 0.312381, 0, 0, 0, 0.263762, 0, 0, 0, 0.273021, 0, 0.268273, 0 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="laser_gun"]
 transform = Transform( 0.0600209, 0, 0, 0, 0.0662622, 0, 0, 0, 0.273021, 0.211104, 0.284389, -0.513868 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="laser_gun"]
 transform = Transform( 0.0600209, 0, 0, 0, 0.0662622, 0, 0, 0, 0.273021, -0.197184, 0.301988, -0.513868 )
 mesh = SubResource( 2 )
-material/0 = null
-
-[node name="guns" type="Spatial" parent="laser_gun"]
-
-[node name="gun" type="Position3D" parent="laser_gun/guns"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163475, 0.275253, -0.824733 )
-
-[node name="gun2" type="Position3D" parent="laser_gun/guns"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188868, 0.260813, -0.832012 )
 
 [node name="Area" type="Area" parent="."]
 
@@ -56,3 +44,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19384, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -1 )
 collide_with_areas = true
+
+[node name="guns" type="Spatial" parent="."]
+
+[node name="gun" type="Position3D" parent="guns"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163475, 0.275253, -0.824733 )
+
+[node name="gun2" type="Position3D" parent="guns"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188868, 0.260813, -0.832012 )

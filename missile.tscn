@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://missile.gd" type="Script" id=1]
 [ext_resource path="res://assets/OBJ format/rocket_topA.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/OBJ format/rocket_baseB.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://yOmniLight.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.858824, 0, 1, 1 )
@@ -11,9 +10,8 @@ albedo_color = Color( 0.858824, 0, 1, 1 )
 [sub_resource type="CapsuleMesh" id=2]
 material = SubResource( 1 )
 
-[sub_resource type="CapsuleShape" id=3]
-radius = 0.247235
-height = 0.138209
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.216999, 0.142318, 0.221292 )
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.843137, 0.870588, 0.909804, 1 )
@@ -72,12 +70,12 @@ script = ExtResource( 1 )
 transform = Transform( 0.0869806, 0, 0, 0, 0.097672, 0, 0, 0, 0.271814, 0, 0, 0 )
 visible = false
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.47693, 0, 0, -0.267489 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( 0.17, 0, 0, 0, -0.0144771, 0.29965, 0, -0.29965, -0.0144771, 0, 0, 0 )
@@ -85,26 +83,11 @@ transform = Transform( 0.17, 0, 0, 0, -0.0144771, 0.29965, 0, -0.29965, -0.01447
 [node name="rocket_baseB" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.759335, -0.036686 )
 mesh = ExtResource( 3 )
-material/0 = null
-material/1 = null
-material/2 = null
 
 [node name="rocket_sidesB" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 2.29515, 0.0625732, 0, 0.0625732, 1.00302, 0, 0, 0 )
 mesh = SubResource( 7 )
-material/0 = null
-material/1 = null
-material/2 = null
 
 [node name="rocket_topA" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23672, 0.108064 )
 mesh = ExtResource( 2 )
-material/0 = null
-material/1 = null
-material/2 = null
-material/3 = null
-
-[node name="OmniLight" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-light_color = Color( 0.933333, 0.137255, 0.137255, 1 )
-light_energy = 2.0

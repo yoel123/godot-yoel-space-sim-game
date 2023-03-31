@@ -1,14 +1,15 @@
 extends KinematicBody
 
 var ye = load("res://yframework.gd").new()
+var ai_movement = load("res://ai_movement.gd").new()
 
 var targ
-var speed = 60
+var speed = 160
 var dmg = 6
 
 var movment_type = "hooming"
 
-var life_timer = 30
+var life_timer = 2
 var life_counter = 0
 
 var team = 1
@@ -18,7 +19,13 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
+	
+	#life timer (remove when ends)
+	life_counter+=delta
+	if life_counter>life_timer: queue_free()	
+	
 	move(delta)
+	
 	
 	#get overlapping areas if any
 	var hit = $Area.get_overlapping_areas()
@@ -27,11 +34,16 @@ func _physics_process(delta):
 	if hit :
 		#get the first one
 		hit = hit[0].get_parent()
+		
+		#dont hit self
+		if hit.team && hit.team == team:return
+		
 		#check if the object has method take dmg 
 		#if so use it and pass this object 
 		if(hit.has_method("take_dmg")): hit.take_dmg(self)
 		queue_free() #remove self
 		#print("hit")
+	
 	
 	
 	pass #end _physics_process
@@ -57,11 +69,7 @@ func move(delta):
 		#is_instance_valid checks if object is not deleated when godot does
 		#queue_free it dosnt remove the object
 		if targ && is_instance_valid(targ):
-			#change rotation to target rotation
-			look_at(targ.global_transform.origin,Vector3.UP)
-			#change move vector to target direction
-			var dir = (targ.transform.origin - transform.origin).normalized()
-			move_and_collide(dir*speed *delta)
+			ai_movement.home(self,delta,speed)
 		else:movment_type ="dumb_fire" #change to dumb fire if no target
 		
 	pass #end move
