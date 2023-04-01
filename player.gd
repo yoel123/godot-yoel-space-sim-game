@@ -3,6 +3,7 @@ extends KinematicBody
 var ye = load("res://yframework.gd").new()
 var bullet = preload("res://bullet.tscn")
 var main_weapon = load("res://weapon.gd").new()
+var secondery_weapon = load("res://weapon.gd").new()
 
 
 #how is the plane/ship controlled
@@ -42,6 +43,9 @@ func _ready():
 	add_to_group("player")
 	main_weapon.that = self#pass this obj refrence to weapon
 	#main_weapon.weapon_name ="missile"
+	
+	secondery_weapon.set_weapon_stats_by_name("dumb_missile")
+	secondery_weapon.that = self
 	pass # Replace with function body.
 
 func _process(delta):
@@ -77,14 +81,8 @@ func get_input(delta):
 	if Input.is_action_pressed("match_speed") && is_instance_valid(targ):
 		forward_speed = targ.speed
 		if forward_speed > max_speed:forward_speed = max_speed
-	#shot
-	if main_weapon.can_shot(delta,"fire"):
-		#shot all guns
-		for gun in $guns.get_children():
-			#create shot
-			main_weapon.make_bullet(gun)
-		pass
-	pass
+	
+	shot(delta)
 	
 	# If camera toggle pressed once (to avoid repeat presses) 
 	if Input.is_action_just_pressed("camera_toggle"):
@@ -99,7 +97,28 @@ func take_dmg(hit):
 	if hit.team!=team:hit.queue_free()
 	#print("hit player")
 	pass
-#end take_dmg	
+#end take_dmg
+
+func shot(delta):
+	
+	#shot
+	if main_weapon.can_shot(delta,"fire"):
+		#shot all guns
+		for gun in $guns.get_children():
+			#create shot
+			main_weapon.make_bullet(gun)
+		pass
+	pass
+	
+	#shot secondery
+	if secondery_weapon.can_shot(delta,"secondery_fire"):
+		#shot all guns
+		for gun in $guns2.get_children():
+			#create shot
+			secondery_weapon.make_bullet(gun)
+		pass
+	pass
+#end shot	
 
 func keyboard_movment(delta):
 	

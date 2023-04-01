@@ -1,6 +1,7 @@
 extends Node
 var ye = load("res://yframework.gd").new()
 var bullet = load("res://bullet_factory.gd").new()
+var weapon_db = load("res://weapon_db.gd").new()
 
 var that
 
@@ -9,6 +10,7 @@ var shot_timer = 0.2
 var shot_counter = 0
 var dmg = 1
 var bullet_speed = 150
+var bullet_life = 2
 
 var team = 1
 
@@ -65,6 +67,7 @@ func make_bullet(gun):
 	#create bullet
 	if(weapon_name =="normal"): b = bullet.normal(self,gun)
 	if(weapon_name =="missile"): b = bullet.guided_missile(self,gun)
+	if(weapon_name =="dumb_missile"): b = bullet.dumb_missile(self,gun)
 	
 
 	
@@ -103,7 +106,5 @@ func update(delta):
 
 func set_weapon_stats_by_name(name):
 	
-	if name == "blue laser":
-		pass
-	
+	weapon_db.set_weapon(name,self)
 	pass

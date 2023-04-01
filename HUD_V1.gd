@@ -16,6 +16,7 @@ onready var ProgressBar_Shield = $Data_Target/ProgressBar_Shield
 
 onready var Data_Controls = $Data_Controls
 onready var ProgressBar_WPN1 = $Data_Controls/ProgressBar_WPN1
+onready var ProgressBar_WPN2 = $Data_Controls/ProgressBar_WPN2
 
 
 var player
@@ -85,6 +86,7 @@ func _update_hud():
 	if !is_instance_valid(player):return
 	
 	ProgressBar_WPN1.value = player.main_weapon.get_ammo_hud()
+	ProgressBar_WPN2.value = player.secondery_weapon.get_ammo_hud()
 	
 	# Set ProgressBar values
 	$Data_Ship/ProgressBar_Hull.value = value_ownship_hull

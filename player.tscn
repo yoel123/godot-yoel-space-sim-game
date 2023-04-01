@@ -73,6 +73,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.2, -4.2 )
 [node name="gun2" type="Position3D" parent="guns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.2, -4.2 )
 
+[node name="guns2" type="Spatial" parent="."]
+
+[node name="gun1" type="Position3D" parent="guns2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33989, 1.2, -3.89062 )
+
+[node name="gun2" type="Position3D" parent="guns2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21664, 1.2, -3.89062 )
+
 [node name="craft_speederA" type="MeshInstance" parent="."]
 transform = Transform( -4, 0, 3.49691e-07, 0, 4, 0, -3.49691e-07, 0, -4, 0, 0, 0 )
 mesh = ExtResource( 1 )

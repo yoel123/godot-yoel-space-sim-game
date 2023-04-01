@@ -12,6 +12,7 @@ func normal(that,gun):
 	b.scale =Vector3(1,1,1)#reset scale
 	b.speed = that.bullet_speed
 	b.dmg = that.dmg
+	b.life_timer = that.bullet_life
 	#b.look_at($target.global_transform.origin,Vector3.UP) #shot to target
 	b.team = that.team #pass player team to bullet
 	return b
@@ -22,17 +23,20 @@ func normal(that,gun):
 func guided_missile(that,gun):
 	
 	#that is the weapon, that.that is the weapons parent 
-	
-	if !that.that.targ:return
-	#get weapon owner target
-	var targ = that.that.targ
-	
+
 	var m =missile.instance()
 	that.that.get_tree().get_root().add_child(m) #add to level
 	m.global_transform = gun.global_transform #put at gun pos
 	m.dmg = that.dmg
-	m.targ = targ
+	m.life_timer = that.bullet_life
+
 	m.team = that.team
+	
+	
+	#get weapon owner target
+	if that.that.targ:m.targ = that.that.targ
+	
+	
 	return m
 	pass
 
