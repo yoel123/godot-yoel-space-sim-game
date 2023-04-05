@@ -26,7 +26,6 @@ func _physics_process(delta):
 	
 	move(delta)
 	
-	print(self.get_parent())
 	#get overlapping areas if any
 	var hit = $Area.get_overlapping_areas()
 	

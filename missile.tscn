@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://missile.gd" type="Script" id=1]
 [ext_resource path="res://assets/OBJ format/rocket_topA.obj" type="ArrayMesh" id=2]
@@ -63,6 +63,28 @@ surfaces/2 = {
 "vertex_count": 34
 }
 
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_specular_mode = 4
+params_blend_mode = 1
+albedo_color = Color( 1, 0.943359, 0, 0.192157 )
+
+[sub_resource type="CapsuleMesh" id=10]
+material = SubResource( 9 )
+radius = 0.2
+mid_height = 0.2
+radial_segments = 20
+rings = 5
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0.0141129, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.328629, 0.720859 ), 0.0, 0.0, 0, 0, Vector2( 0.949597, 0.831288 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.504673, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
 [node name="missile" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -91,3 +113,24 @@ mesh = SubResource( 7 )
 [node name="rocket_topA" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23672, 0.108064 )
 mesh = ExtResource( 2 )
+
+[node name="trailp" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23351 )
+amount = 50
+lifetime = 0.62
+randomness = 1.0
+local_coords = false
+draw_order = 2
+mesh = SubResource( 10 )
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3( 0, 0, 1 )
+spread = 0.5
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 33.0
+angular_velocity = 40.0
+angular_velocity_random = 1.0
+angle = 180.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 11 )
+color_ramp = SubResource( 12 )

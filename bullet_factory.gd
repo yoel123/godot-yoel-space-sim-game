@@ -31,7 +31,7 @@ func guided_missile(that,gun):
 	m.life_timer = that.bullet_life
 
 	m.team = that.team
-	
+	m.scale =Vector3(1,1,1)#reset scale
 	
 	#get weapon owner target
 	if that.that.targ:m.targ = that.that.targ

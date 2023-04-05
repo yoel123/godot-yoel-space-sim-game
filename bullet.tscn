@@ -5,6 +5,11 @@
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 81.81, 0, 0.44, 1 )
+emission_enabled = true
+emission = Color( 88.52, 79.31, 70.69, 1 )
+emission_energy = 9.21
+emission_operator = 1
+emission_on_uv2 = false
 
 [sub_resource type="CapsuleMesh" id=2]
 material = SubResource( 1 )

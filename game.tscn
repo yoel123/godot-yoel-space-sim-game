@@ -4,7 +4,7 @@
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game.gd" type="Script" id=4]
-[ext_resource path="res://missile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://flare.tscn" type="PackedScene" id=5]
 [ext_resource path="res://big_ship.tscn" type="PackedScene" id=6]
 [ext_resource path="res://mission_manager.tscn" type="PackedScene" id=7]
 
@@ -21,11 +21,12 @@ fog_depth_begin = 3.0
 glow_enabled = true
 glow_levels/4 = true
 glow_levels/5 = false
-glow_intensity = 1.53
-glow_strength = 0.71
-glow_bloom = 0.19
+glow_intensity = 1.52
+glow_strength = 0.79
+glow_bloom = 0.27
 glow_blend_mode = 0
-glow_hdr_threshold = 0.0
+glow_hdr_threshold = 4.0
+glow_hdr_luminance_cap = 1.2
 glow_bicubic_upscale = true
 
 [node name="game" type="Spatial"]
@@ -39,9 +40,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -327.625, 56.5213, 31.7602 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.996957, 0.0779545, 0, -0.0779545, 0.996957, 0, 0, 0, 1, -18.0905, -6.1493, -39.8794 )
-
-[node name="missile" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0916, 17.7968, 26.4509 )
 
 [node name="enemy2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9562, 22.5838, 70.8686 )
@@ -85,3 +83,6 @@ team = 1
 [node name="enemy7" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -328.082, 81.8652, -50.2916 )
 team = 1
+
+[node name="flare" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8507, 83.5042, 103.925 )

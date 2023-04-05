@@ -10,8 +10,8 @@ onready var enemy_pointer = $enemy_pointer
 
 var rng = RandomNumberGenerator.new()
 
-var max_hp = 3
-var hp = 3
+var max_hp = 10
+var hp = 10
 
 var max_shield = 20
 var shield = 20
@@ -31,20 +31,25 @@ var rnd_targ_reached
 
 var dead
 
+var is_flare
+
+var yrange =1000
+
 var state ="move_random"#chase"
 
-onready var trail = $trails.get_child(0)
+var trail 
 
 export var team = 2
 
 onready var modal = $modal
 
 func _ready():
+	trail = $trails.get_child(0)
 	add_to_group("enemy")
 	#pass this obj refrence to weapon and fire rate
 	main_weapon.yinit(self,0.5,true) 
 
-	if team ==1:
+	if team ==1 && modal:
 		var material = SpatialMaterial.new()
 		material.albedo_color = Color(1, 0.63, 0.2)
 		modal.set_surface_material(3,material)
@@ -53,7 +58,7 @@ func _ready():
 
 
 func _process(delta):
-	trail.trails_handle(self,speed)
+	if trail: trail.trails_handle(self,speed)
 	main_weapon.update(delta)
 	pass #end process
 
@@ -90,30 +95,8 @@ func take_dmg(hit):
 	
 
 func set_target():
-	#get player
-	var yplayers = ye.get_by_type(self,"player") 
-	if yplayers and yplayers[0]:
-		var player_targ = yplayers[0]
-		#if player not on the same team attack it and its a valid active object
-		if player_targ.team != team and is_instance_valid(player_targ):
-			var dist_from_player = ye.dist_3d(self,player_targ)
-			#if player is in range set it as target
-			if dist_from_player <300: targ = player_targ
-			pass
-		pass
-		
-	#loop all fighters,get the closest if not on same team set as target
-	var fighters = ye.get_by_type(self,"enemy") 
-	
-	fighters.shuffle()
-	
-	for fighter in fighters:
-		if !is_instance_valid(fighter): continue #make sure its an active object
-		
-		var dist_from_fighter = ye.dist_3d(self,fighter)
-		if dist_from_fighter <1000 and fighter.team !=team:
-			targ = fighter
-			return
+
+	ai_movement.lock_on_closest_fighter(self,yrange)
 			
 	
 	pass
@@ -155,7 +138,7 @@ func move(delta):
 	pass #end move
 
 func shield_do(delta):
-	if $shieldmesh.visible==true:$shieldmesh.visible=false
+	if has_node("shieldmesh") && $shieldmesh.visible==true:$shieldmesh.visible=false
 	#regenrate shield (if its not at max value
 	if shield<max_shield:
 		shield_timer_count+=delta

@@ -1,6 +1,7 @@
 extends Spatial
 
 var ye = load("res://yframework.gd").new()
+var ai_movement = load("res://ai_movement.gd").new()
 var bullet = preload("res://bullet.tscn")
 var explosion  = preload("res://explosion.tscn")
 var main_weapon = load("res://weapon.gd").new()
@@ -26,7 +27,8 @@ func _ready():
 	$placeholder.visible = false
 	
 	set_turret_type()
-	pass # Replace with function body.
+	pass
+#end ready
 
 func _process(delta):
 	if check_targ_not_exist():get_target()
@@ -42,24 +44,9 @@ func _physics_process(delta):
 func get_target():
 	
 	
-	#loop smal big and player ship and if one is close target it
+	ai_movement.lock_on_closest_fighter(self,yrange,true)
 	
-	#try targeting small ship
-	var small_ships = ye.get_by_type(self,"enemy") #get all small ships
-	
-	#add player to small ships
-	var yplayers = ye.get_by_type(self,"player") 
-	if yplayers[0] && is_instance_valid(yplayers[0]): small_ships.append(yplayers[0])
-	
-	small_ships.shuffle()
-	
-	#loop all small ships
-	for ship in small_ships:
-		var dist = ye.dist_3d(self,ship) #get distance between self and ship
-		#if in range and not on the same team set as target
-		if dist<= yrange && team !=ship.team:
-			targ = ship
-			return
+	return
 	
 	#try targeting big ship
 	var big_ships = ye.get_by_type(self,"big ship")
@@ -109,8 +96,12 @@ func set_turret_type(ytype="laser_gun"):
 		main_weapon.yinit(self,0.5,true) 
 		main_weapon.max_ammo = 200
 		main_weapon.reload()
-		
-	
+	if type =="mini_rockets":
+		main_weapon.yinit(self,1,true) 
+		main_weapon.max_ammo = 500
+		main_weapon.reload()
+		main_weapon.uses_ammo = true
+		main_weapon.weapon_name ="missile"
 	
 	pass
 #end get target
