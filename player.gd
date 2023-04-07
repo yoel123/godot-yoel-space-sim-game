@@ -4,6 +4,8 @@ var ye = load("res://yframework.gd").new()
 var bullet = preload("res://bullet.tscn")
 var main_weapon = load("res://weapon.gd").new()
 var secondery_weapon = load("res://weapon.gd").new()
+var flare_luncher = load("res://weapon.gd").new()
+var ai_movement = load("res://ai_movement.gd").new()
 
 
 #how is the plane/ship controlled
@@ -46,6 +48,8 @@ func _ready():
 	
 	secondery_weapon.set_weapon_stats_by_name("dumb_missile")
 	secondery_weapon.that = self
+	flare_luncher.set_weapon_stats_by_name("flare")
+	flare_luncher.that = self
 	pass # Replace with function body.
 
 func _process(delta):
@@ -94,8 +98,8 @@ func get_input(delta):
 	
 func take_dmg(hit):
 	#remove bullet
-	if hit.team!=team:hit.queue_free()
-	#print("hit player")
+	hit.queue_free()
+
 	pass
 #end take_dmg
 
@@ -116,6 +120,11 @@ func shot(delta):
 		for gun in $guns2.get_children():
 			#create shot
 			secondery_weapon.make_bullet(gun)
+		pass
+	pass
+	
+	if flare_luncher.can_shot(delta,"shot_flare"):
+		flare_luncher.make_bullet($flare_lunch_pos)
 		pass
 	pass
 #end shot	
@@ -174,7 +183,7 @@ func mouse_movement(delta):
 
 func point_to_target() :
 	
-	var enemies = ye.get_by_type(self,"enemy")
+	var enemies = ai_movement.get_fighters(self)
 	if enemies.size()>0 :
 		$target2/tri.visible = true
 		$target2.look_at(enemies[0].global_transform.origin,Vector3.UP)

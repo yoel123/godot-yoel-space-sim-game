@@ -64,7 +64,7 @@ func shot(delta):
 	look_at(targ.global_transform.origin,Vector3.UP)
 	#if aming at parrent stop shooting
 	if is_aim_at_parrent(): return
-	
+
 	if main_weapon.can_shot_ai(delta):
 		for gun in guns.get_children():
 			var b = main_weapon.make_bullet(gun)
@@ -85,6 +85,7 @@ func is_aim_at_parrent():
 func set_parrent(p):
 	parent = p
 	team = parent.team
+	main_weapon.team = team
 	pass
 #end get target
 

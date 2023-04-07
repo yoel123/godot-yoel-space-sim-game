@@ -62,9 +62,12 @@ func move(delta):
 	if movment_type =="hooming":
 		#set first enemy as target for now
 		if !targ:
-			var targs = ye.get_by_type(self,"enemy") 
+			var targs = ai_movement.get_fighters(self)
 			if targs and targs[0]:
 				 targ = targs[0] #set first enemy as target
+		
+		#try locking on flare
+		ai_movement.lock_on_closest_flare(self)
 		
 		#move twords target  
 		#is_instance_valid checks if object is not deleated when godot does

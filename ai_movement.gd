@@ -15,7 +15,7 @@ func move_to_random_pos(that,delta,rng,distance_from_targ):
 		that.rnd_targ_reached = false
 		#reset random target to new target
 		rng.randomize()
-		that.rnd_targ = Vector3(rng.randi_range(-move_random_range,move_random_range),rng.randi_range(-move_random_range,move_random_range),rng.randi_range(-move_random_range,move_random_range))
+		that.rnd_targ = rend_3d_pos(rng,move_random_range) #rand vector 3
 		#add target position to random pos (so you get a random position around the target)
 		that.rnd_targ = that.rnd_targ + that.targ.global_transform.origin
 		pass
@@ -32,6 +32,10 @@ func move_to_random_pos(that,delta,rng,distance_from_targ):
 	ye.look_at_slowv(that,delta,that.rnd_targ,that.rotate_speed)
 	pass
 #end follow
+
+func rend_3d_pos(rng,yrange):
+	var ret = Vector3(rng.randi_range(-yrange,yrange),rng.randi_range(-yrange,yrange),rng.randi_range(-yrange,yrange))
+	return ret	
 
 #change rotation towerds a target slow
 func follow(that,delta,dist_to_evade):
@@ -64,7 +68,7 @@ func home(that,delta,speed):
 func lock_on_closest_fighter(that,dist,with_flares=false):
 	
 	#get all fighters
-	var fighters = ye.get_by_type(that,"enemy") 
+	var fighters = get_fighters(that)
 	
 	#add player to fighters
 	var yplayers = ye.get_by_type(that,"player") 
@@ -124,4 +128,22 @@ func lock_on_closest_torpedo(that,dist):
 	pass
 #lock_on_closest_torpedo
 
+func lock_on_closest_flare(that):
+	var flares = []
+	var fighters = get_fighters(that)
+		
+	#loop all fighters
+	for fighter in fighters:
+		#if its a flare add to flares  (and make sure its not on the same team)
+		if fighter.is_flare  && fighter.team != that.team: flares.append(fighter)
 
+	for flare in flares:
+		#if a flare is close lock on it
+		var dist_from_flare = ye.dist_3d(that,flare)
+		if dist_from_flare < 200: 
+			that.targ = flare
+			return
+	
+#end lock_on_closest_flare
+
+func get_fighters(that): return  ye.get_by_type(that,"fighter")

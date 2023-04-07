@@ -8,7 +8,7 @@ var life_counter = 0
 var speed = 0
 
 func _ready():
-	add_to_group("enemy")
+	add_to_group("fighter")
 	pass 
 #end ready
 

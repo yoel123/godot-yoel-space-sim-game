@@ -136,3 +136,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188868, 0.260813, -0.832012 
 transform = Transform( -0.996329, 0, -0.0856081, 0, 1, 0, 0.0856081, 0, -0.996329, 0.0313312, 0, 0 )
 mesh = SubResource( 7 )
 skeleton = NodePath("")
+
+[node name="ammotxt" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12271, 0 )
+visible = false
+pixel_size = 0.05
+billboard = 1
+text = "ammo:"

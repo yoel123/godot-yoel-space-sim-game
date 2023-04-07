@@ -10,8 +10,8 @@ onready var enemy_pointer = $enemy_pointer
 
 var rng = RandomNumberGenerator.new()
 
-var max_hp = 10
-var hp = 10
+var max_hp = 5
+var hp = 5
 
 var max_shield = 20
 var shield = 20
@@ -45,7 +45,7 @@ onready var modal = $modal
 
 func _ready():
 	trail = $trails.get_child(0)
-	add_to_group("enemy")
+	add_to_group("fighter")
 	#pass this obj refrence to weapon and fire rate
 	main_weapon.yinit(self,0.5,true) 
 
@@ -108,7 +108,7 @@ func move(delta):
 	
 	#move twords target if close continue flying (dont run into target 
 	#and get behind target)
-	print(targ)
+
 	#check if target is valid
 	if !targ || targ == null || !is_instance_valid(targ):
 		speed = 0

@@ -63,6 +63,10 @@ func make_timer(that,time,callback_name,ystart):
 	return ytimer
 #end make_timer
 
+func has_att(that,att_name): return att_name in that
+func yhas(that,att_name): return att_name in that
+	
+
 func deep_copy_dict(v):
 	var t = typeof(v)
 

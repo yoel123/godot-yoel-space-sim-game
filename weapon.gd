@@ -68,6 +68,7 @@ func make_bullet(gun):
 	if(weapon_name =="normal"): b = bullet.normal(self,gun)
 	if(weapon_name =="missile"): b = bullet.guided_missile(self,gun)
 	if(weapon_name =="dumb_missile"): b = bullet.dumb_missile(self,gun)
+	if(weapon_name =="flare"): b = bullet.flare(self,gun)
 	
 
 	
@@ -86,8 +87,8 @@ func aim_gun(gun):
 func reload():ammo = max_ammo
 
 func recharge(delta):
-	#if dosnt use ammo and has less then max ammo
-	if (!uses_ammo || uses_ammo==null) && ammo==max_ammo:return
+	#if  uses ammo or has max ammo exit
+	if uses_ammo || ammo==max_ammo:return
 	
 	#when recharge rate timer is done
 	recharge_counter += delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://flare.gd" type="Script" id=1]
 
@@ -13,6 +13,8 @@ emission_on_uv2 = false
 [sub_resource type="CapsuleMesh" id=2]
 material = SubResource( 3 )
 
+[sub_resource type="CapsuleShape" id=4]
+
 [node name="flare" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -21,3 +23,9 @@ transform = Transform( 0.5, 0, 0, 0, 0.011143, 0.499876, 0, -0.499876, 0.011143,
 mesh = SubResource( 2 )
 
 [node name="trails" type="Spatial" parent="."]
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.643446, 0, 0, 0, 0.00456558, -0.64114, 0, 0.706822, 0.00503331, 0.000532746, -0.0114784, 0 )
+shape = SubResource( 4 )
