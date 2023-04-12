@@ -4,6 +4,7 @@ var ye = load("res://yframework.gd").new()
 
 #the max value of the random pos
 var move_random_range = 150
+var rnd_targ
 
 #look_at_slow(that,delta,targ,rotate_speed)
 

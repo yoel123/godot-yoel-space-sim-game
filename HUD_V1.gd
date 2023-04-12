@@ -61,9 +61,10 @@ func cam_btn_clicked():
 
 func update_target_stats():
 	
+	#check if thers a player and it has a target
 	if !player:return
 	if !player.targ || !is_instance_valid(player.targ):return
-	
+	if player.targ.get("is_flare"):return #make sure its not flare
 	
 	var targ_data = player.targ.get_hull_and_shield()
 	

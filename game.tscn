@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Stars Sphere.jpg" type="Texture" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://flare.tscn" type="PackedScene" id=5]
 [ext_resource path="res://big_ship.tscn" type="PackedScene" id=6]
 [ext_resource path="res://mission_manager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://stationery_laser_turret.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 1 )
@@ -86,3 +87,7 @@ team = 1
 
 [node name="flare" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8507, 83.5042, 103.925 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -334.35, 69.7083, 8.07655 )
+team = 1
