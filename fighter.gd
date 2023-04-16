@@ -10,13 +10,14 @@ onready var enemy_pointer = $enemy_pointer
 
 var rng = RandomNumberGenerator.new()
 
-var max_hp = 5
-var hp = 5
+var max_hp = 50
+var hp = 50
 
-var max_shield = 20
-var shield = 20
+var max_shield = 200
+var shield = 200
 var shield_timer = 2
 var shield_timer_count = 0
+var shield_regen_rate = 10 #how much shield is restored each shield_timer tick
 
 var max_speed = 35
 var speed = 0
@@ -144,7 +145,7 @@ func shield_do(delta):
 		shield_timer_count+=delta
 		if shield_timer_count>shield_timer:
 			shield_timer_count = 0
-			shield+=1
+			shield+=shield_regen_rate
 
 	
 	pass#end shield_do

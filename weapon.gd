@@ -8,7 +8,7 @@ var that
 var weapon_name ="normal"
 var shot_timer = 0.2
 var shot_counter = 0
-var dmg = 1
+var dmg = 10
 var bullet_speed = 150
 var bullet_life = 2
 
@@ -26,7 +26,7 @@ var recharge_counter = 0
 
 
 func _ready():
-
+	set_weapon_stats_by_name(weapon_name)
 	pass 
 
 func yinit(that2,fire_rate=0.2,is_ai2 = false):
