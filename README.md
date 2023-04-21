@@ -59,8 +59,8 @@ eventually, people will be able to vote on stuff like this, for now its too earl
 
 as i menthionded in donations:
 
-programmers: for gamplay,gui,graphics (shaders 3d modals etc).
-mostly those who are fammilier with godot and gdscript and built at least
+programmers: for gameplay,gui,graphics (shaders 3d modals etc).
+mostly those who are familiar with godot and gdscript and built at least
 one project and did a couple of tutorials. its a 3d game so knowing the gdscript 3d api and 3d math
 will be needed for some of the features.
 3d is not needed for gui and data manipulation and some gamplay logic.
