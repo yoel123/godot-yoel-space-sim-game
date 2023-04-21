@@ -4,10 +4,13 @@ var ye = load("res://yframework.gd").new()
 var bullet = preload("res://bullet.tscn")
 var explosion  = preload("res://explosion.tscn")
 var ai_movement = load("res://ai_movement.gd").new()
+var ai_combat = load("res://ai_combat.gd").new()
 
-var target
+var ship_name = "heavy_shuttle"
 
-var rotate_speed = 0.5
+var targ
+
+var rotate_speed = 0.4
 var speed = 3
 var velocity
 
@@ -20,6 +23,7 @@ onready var modal = $modal
 var hp = 100
 var max_hp = 100
 var dead
+var create_ship_wreck_once
 
 var rng = RandomNumberGenerator.new()
 
@@ -47,32 +51,19 @@ func _physics_process(delta):
 	pass
 
 func get_target(delta):
-	if !target:
-		#search for another big ship
-		var yships = ye.get_by_type(self,"big ship") 
-		for ship in yships:
-			if ship.team != team:
-				 target = ship #set player as target
+	if !targ:
+		ai_combat.lock_on_closest_big_ship(self,1500)
 		pass
 	pass
 	
 	
 func move(delta):
-	if !target || dead || !is_instance_valid(target):return
-	#rotate to target
-	ye.look_at_slow(self,delta,target,rotate_speed)
-	#print(self,delta,target,rotate_speed)
+	if !targ || dead || !is_instance_valid(targ):return
+
+	if ai_movement.follow(self,delta,weapon_range):return
 	
-	#get distance from target
-	
-	
-	var dist = ye.dist_3dvt(self,target.global_transform.origin)
-	if dist <weapon_range:return #stop moving if in weapon range
-	
-	#move to target
-	velocity = -transform.basis.z * speed
-	#move
-	move_and_collide(velocity * delta)
+	ai_movement.move_forwerd(self,delta,speed)
+
 	
 	pass #end move
 
@@ -83,25 +74,8 @@ func shot(delta):
 #end shot
 
 func take_dmg(hit):
-	
-	#remove bullet
-	hit.queue_free()
-
-	#no friendly fire only bullet from not your team can damage
-	var hteam = hit.team
-	if hteam != team:
-		hp-=hit.dmg #else reduce hull hp
-	#if dead do explosion
-	if hp<=0:
-		dead = true
-		for i in 10: #make 10 explotions
-			var boom = explosion.instance()
-			owner.add_child(boom)
-			var rnd_pos = ai_movement.rend_3d_pos(rng,30) #random 3d vector
-			#add rrandom vector to ships position and set it as current explotion pos
-			boom.global_transform.origin = self.global_transform.origin+rnd_pos
-			boom.explode()
-		queue_free()
+	ai_combat.take_dmg(self,hit,false)
+	ai_combat.is_dead(self,15,30)
 	pass 
 #end take_dmg
 

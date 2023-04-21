@@ -2,6 +2,7 @@ extends Spatial
 
 var ye = load("res://yframework.gd").new()
 var ai_movement = load("res://ai_movement.gd").new()
+var ai_combat = load("res://ai_combat.gd").new()
 var bullet = preload("res://bullet.tscn")
 var explosion  = preload("res://explosion.tscn")
 var main_weapon = load("res://weapon.gd").new()
@@ -44,7 +45,7 @@ func _physics_process(delta):
 func get_target():
 	
 	
-	ai_movement.lock_on_closest_fighter(self,yrange,true)
+	ai_combat.lock_on_closest_fighter(self,yrange,true)
 	
 	return
 	
@@ -77,9 +78,12 @@ func check_targ_not_exist():
 	if !targ || !is_instance_valid(targ):return true
 
 func is_aim_at_parrent():
-	var colide_parent = $ray.get_collider()
-	if colide_parent && colide_parent.get_parent()==parent: return true
 	
+	var colide_parent = $ray.get_collider()
+	if colide_parent !=null:return
+	#	if colide_parent.get_parent().is_in_group("big ship"):
+	#		 return true 
+
 	pass
 
 func set_parrent(p):

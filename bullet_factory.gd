@@ -16,6 +16,7 @@ func normal(that,gun):
 	b.life_timer = that.bullet_life
 	#b.look_at($target.global_transform.origin,Vector3.UP) #shot to target
 	b.team = that.team #pass player team to bullet
+	b.parent = that.that
 	return b
 	pass
 #end normal

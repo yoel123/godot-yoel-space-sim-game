@@ -2,9 +2,12 @@ extends KinematicBody
 
 var ye = load("res://yframework.gd").new()
 var ai_movement = load("res://ai_movement.gd").new()
+var ai_combat = load("res://ai_combat.gd").new()
 var bullet = preload("res://bullet.tscn")
 var explosion  = preload("res://explosion.tscn")
 var main_weapon = load("res://weapon.gd").new()
+
+var ship_name = "fighter"
 
 onready var enemy_pointer = $enemy_pointer
 
@@ -72,32 +75,15 @@ func _physics_process(delta):
 
 func take_dmg(hit):
 	
-	#remove bullet
-	hit.queue_free()
-
-	#no friendly fire only bullet from not your team can damage
-	var hteam = hit.team
-	if hteam != team:
-		if shield>0:
-			shield-=hit.dmg #if thers shield reduce it
-			$shieldmesh.visible=true #show shield mesh
-			if shield<=0:hp-=hit.dmg #if passed shields
-		else:hp-=hit.dmg #else reduce hull hp
-	#if dead do explosion
-	if hp<=0:
-		dead = true
-		var boom = explosion.instance()
-		owner.add_child(boom)
-		boom.global_transform = self.global_transform
-		boom.explode()
-		queue_free()
+	ai_combat.take_dmg(self,hit)
+	ai_combat.is_dead(self,1,1)
 	pass #end take_dmg
 
 	
 
 func set_target():
 
-	ai_movement.lock_on_closest_fighter(self,yrange)
+	ai_combat.lock_on_closest_fighter(self,yrange)
 			
 	
 	pass

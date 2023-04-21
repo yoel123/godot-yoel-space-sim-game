@@ -10,7 +10,7 @@ var life_counter = 0
 var dmg = 1
 
 var team = 1
-
+var parent
 
 
 func _ready():
@@ -28,7 +28,7 @@ func _physics_process(delta):
 	if hit :
 		#the area parent (the object)
 		hit = hit[0].get_parent()
-		if(hit.has_method("take_dmg")): hit.take_dmg(self)
+		if(hit.has_method("take_dmg")) && hit !=parent: hit.take_dmg(self)
 		#print(str(hit.get_name()))
 		#print("hit"+str(randi()) )
 		

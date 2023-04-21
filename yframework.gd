@@ -96,6 +96,11 @@ func deep_copy_dict(v):
 		return v
 #end deeo copy dict
 
+func rend_3d_pos(rng,yrange):
+	rng.randomize()
+	var ret = Vector3(rng.randi_range(-yrange,yrange),rng.randi_range(-yrange,yrange),rng.randi_range(-yrange,yrange))
+	return ret	
+
 func dist_3d(origen,target):
 	var dist = origen.transform.origin.distance_to(target.global_transform.origin)
 	return dist

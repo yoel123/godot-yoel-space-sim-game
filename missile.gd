@@ -2,6 +2,7 @@ extends KinematicBody
 
 var ye = load("res://yframework.gd").new()
 var ai_movement = load("res://ai_movement.gd").new()
+var ai_combat = load("res://ai_combat.gd").new()
 
 var targ
 var speed = 160
@@ -13,6 +14,10 @@ var life_timer = 2
 var life_counter = 0
 
 var team = 1
+
+var lock_after_lunch
+var lock_timer = 0.4
+var lock_timer_counter = 0
 
 func _ready():
 	add_to_group("missile")
@@ -56,18 +61,23 @@ func move(delta):
 	
 	
 	if movment_type =="dumb_fire":
+		#if its a missile that locks on after lunch
+		if lock_after_lunch:
+			lock_timer_counter +=delta
+			if lock_timer< lock_timer_counter:movment_type ="hooming"
+		
 		transform.origin += -transform.basis.z * speed * delta
 		pass
 	
 	if movment_type =="hooming":
 		#set first enemy as target for now
 		if !targ:
-			var targs = ai_movement.get_fighters(self)
+			var targs = ai_combat.get_fighters(self)
 			if targs and targs[0]:
 				 targ = targs[0] #set first enemy as target
 		
 		#try locking on flare
-		ai_movement.lock_on_closest_flare(self)
+		ai_combat.lock_on_closest_flare(self)
 		
 		#move twords target  
 		#is_instance_valid checks if object is not deleated when godot does

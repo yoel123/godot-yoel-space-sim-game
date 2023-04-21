@@ -6,6 +6,7 @@ var main_weapon = load("res://weapon.gd").new()
 var secondery_weapon = load("res://weapon.gd").new()
 var flare_luncher = load("res://weapon.gd").new()
 var ai_movement = load("res://ai_movement.gd").new()
+var ai_combat = load("res://ai_combat.gd").new()
 
 
 #how is the plane/ship controlled
@@ -183,7 +184,7 @@ func mouse_movement(delta):
 
 func point_to_target() :
 	
-	var enemies = ai_movement.get_fighters(self)
+	var enemies = ai_combat.get_fighters(self)
 	if enemies.size()>0 :
 		$target2/tri.visible = true
 		$target2.look_at(enemies[0].global_transform.origin,Vector3.UP)
