@@ -109,6 +109,7 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 50.0
+allow_greater = true
 
 [node name="Label_Pri" type="Label" parent="Data_Controls"]
 margin_top = 44.0
@@ -256,3 +257,16 @@ margin_bottom = 112.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 50.0
+
+[node name="Data_Message" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label_Boost" type="Label" parent="Data_Message"]
+margin_right = 1024.0
+margin_bottom = 25.0
+text = "BOOST"
+align = 1
+uppercase = true

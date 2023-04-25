@@ -12,11 +12,13 @@ var ai_movement = load("res://ai_movement.gd").new()
 var yinput_control = "keyboard"#"mouse" #or keyboard
 
 #input response or ship manuverabilety and speed
-export var max_speed = 50
+export var max_speed_normal = 50
+export var max_speed_boost = 60
 export var acceleration = 2.3
 export var pitch_speed = 1.5
 export var roll_speed = 1.9
 export var yaw_speed = 0.75
+var max_speed_current = 50
 var max_yaw = 70
 var max_roll = 70
 var input_response = 8.0
@@ -76,7 +78,7 @@ func get_input(delta):
 
 	#accelerate and decelerate
 	if Input.is_action_pressed("throttle_up"):
-		forward_speed = lerp(forward_speed, max_speed, acceleration * delta)
+		forward_speed = lerp(forward_speed, max_speed_current, acceleration * delta)
 	if Input.is_action_pressed("throttle_down"):
 		forward_speed = lerp(forward_speed, 0, acceleration * delta)
 		#forward_speed = lerp(forward_speed, -max_speed, acceleration * delta)
@@ -84,7 +86,7 @@ func get_input(delta):
 	#compare target speed
 	if Input.is_action_pressed("match_speed") && is_instance_valid(targ):
 		forward_speed = targ.speed
-		if forward_speed > max_speed:forward_speed = max_speed
+		if forward_speed > max_speed_normal:forward_speed = max_speed_normal
 	
 	shot(delta)
 	
@@ -94,6 +96,13 @@ func get_input(delta):
 			$Camera_Pilot.current = true
 		else:
 			$Camera_Ext.current = true
+	
+	if Input.is_action_pressed("boost"):
+		forward_speed = max_speed_boost
+		max_speed_current = max_speed_boost
+	else:
+		max_speed_current = max_speed_normal
+	
 #end get_input
 	
 func take_dmg(hit):
@@ -201,7 +210,7 @@ func point_to_target() :
 	pass #end  point_to_target
 
 
-func get_throttle(): return float(forward_speed) / max_speed * 100
+func get_throttle(): return float(forward_speed / max_speed_current * 100)
 
 
 func _get_mouse_speed() -> Vector2:
