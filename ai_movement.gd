@@ -17,8 +17,12 @@ func move_to_random_pos(that,delta,rng,distance_from_targ):
 		#reset random target to new target
 		rng.randomize()
 		that.rnd_targ = rend_3d_pos(rng,move_random_range) #rand vector 3
+		#if no targ move around self
+		if !that.targ || that.targ ==null:
+				that.rnd_targ = that.rnd_targ + that.global_transform.origin
+		else:
 		#add target position to random pos (so you get a random position around the target)
-		that.rnd_targ = that.rnd_targ + that.targ.global_transform.origin
+			that.rnd_targ = that.rnd_targ + that.targ.global_transform.origin
 		pass
 	#end set random targ
 	

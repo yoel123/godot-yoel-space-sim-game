@@ -32,7 +32,9 @@ func is_dead(that,explotion_num,explotion_range):
 		that.dead = true
 		that.queue_free()
 		explotions_gen(that,explotion_num,explotion_range)
-		wrekege_maker.gen(that,that.ship_name)
+		if !that.create_ship_wreck_once:
+			that.create_ship_wreck_once = true
+			wrekege_maker.gen(that,that.ship_name)
 		
 		
 func explotions_gen(that,num,yrange):

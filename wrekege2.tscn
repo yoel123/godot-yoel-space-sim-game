@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://wrekege.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "metalDark"
@@ -8,9 +10,9 @@ albedo_color = Color( 0.675062, 0.710022, 0.773585, 1 )
 resource_name = "dark"
 albedo_color = Color( 0.27451, 0.298039, 0.341177, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=6]
 resource_name = "metalRed"
-albedo_color = Color( 1, 0.627451, 0.203922, 1 )
+albedo_color = Color( 0.282353, 0.282353, 0.282353, 1 )
 
 [sub_resource type="SpatialMaterial" id=4]
 resource_name = "metal"
@@ -50,7 +52,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 180,
-"material": SubResource( 3 ),
+"material": SubResource( 6 ),
 "name": "metalRed",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -70,7 +72,8 @@ surfaces/3 = {
 "vertex_count": 16
 }
 
-[node name="wrekege1" type="Spatial"]
+[node name="wrekege1" type="KinematicBody"]
+script = ExtResource( 1 )
 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
 

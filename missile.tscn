@@ -8,9 +8,11 @@
 extents = Vector3( 0.216999, 0.142318, 0.221292 )
 
 [sub_resource type="SpatialMaterial" id=4]
+flags_vertex_lighting = true
 albedo_color = Color( 0.843137, 0.870588, 0.909804, 1 )
 
 [sub_resource type="SpatialMaterial" id=5]
+flags_vertex_lighting = true
 albedo_color = Color( 1, 0, 0.768627, 1 )
 
 [sub_resource type="SpatialMaterial" id=6]

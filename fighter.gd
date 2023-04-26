@@ -1,53 +1,35 @@
-extends KinematicBody
+extends "res://general_space_object.gd"
 
-var ye = load("res://yframework.gd").new()
-var ai_movement = load("res://ai_movement.gd").new()
-var ai_combat = load("res://ai_combat.gd").new()
-var bullet = preload("res://bullet.tscn")
-var explosion  = preload("res://explosion.tscn")
-var main_weapon = load("res://weapon.gd").new()
 
-var ship_name = "fighter"
+
 
 onready var enemy_pointer = $enemy_pointer
 
-var rng = RandomNumberGenerator.new()
-
-var max_hp = 50
-var hp = 50
-
-var max_shield = 200
-var shield = 200
-var shield_timer = 2
-var shield_timer_count = 0
-var shield_regen_rate = 10 #how much shield is restored each shield_timer tick
-
-var max_speed = 35
-var speed = 0
-var rotate_speed = 0.5
-var velocity = Vector3.ZERO
-
-var targ_old
-var targ
-
-var rnd_targ
-var rnd_targ_reached
-
-var dead
-
-var is_flare
-
-var yrange =1000
-
-var state ="move_random"#chase"
-
-var trail 
-
-export var team = 2
 
 onready var modal = $modal
 
+
+
 func _ready():
+	
+	
+	ship_name = "fighter"
+	max_hp = 50
+	hp = 50
+
+	max_shield = 200
+	shield = 200
+	shield_timer = 2
+	shield_timer_count = 0
+	shield_regen_rate = 10 #how much shield is restored each shield_timer tick
+
+	max_speed = 35
+	speed = 0
+	rotate_speed = 0.5
+	velocity = Vector3.ZERO
+	
+	yrange =1000
+	
 	trail = $trails.get_child(0)
 	add_to_group("fighter")
 	#pass this obj refrence to weapon and fire rate
