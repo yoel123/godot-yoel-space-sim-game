@@ -26,6 +26,10 @@ var input_response = 8.0
 #guns
 var dmg = 1
 
+# boost
+var boost_avail = 0.1
+var boost_usage_rate = 0.5
+var boost_regen_rate = 0.1
 
 #ship rotation and movment vars
 var velocity = Vector3.ZERO
@@ -65,6 +69,8 @@ func _physics_process(delta):
 	
 	velocity = -transform.basis.z * forward_speed
 	move_and_collide(velocity * delta)
+	boost_handle(delta)
+	$HUD_V1/Data_Boost/ProgressBar_Boost.value = boost_avail * 100
 #end _physics_process
 
 
@@ -97,9 +103,10 @@ func get_input(delta):
 		else:
 			$Camera_Ext.current = true
 	
-	if Input.is_action_pressed("boost"):
+	if (Input.is_action_pressed("boost") && (boost_avail > 0)):
 		forward_speed = max_speed_boost
 		max_speed_current = max_speed_boost
+		boost_avail -= boost_usage_rate * delta
 	else:
 		max_speed_current = max_speed_normal
 	
@@ -210,8 +217,14 @@ func point_to_target() :
 	pass #end  point_to_target
 
 
-func get_throttle(): return float(forward_speed / max_speed_current * 100)
+func get_throttle(): return float(forward_speed / max_speed_normal * 100)
 
+func boost_handle(delta):
+	# Clamp boost from 0 to 1
+	boost_avail = clamp(boost_avail, 0, 1)
+	
+	# Regenerate boost over time
+	boost_avail += boost_regen_rate * delta
 
 func _get_mouse_speed() -> Vector2:
 	
