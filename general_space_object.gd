@@ -41,5 +41,6 @@ var state ="move_random"#chase"
 
 var trail 
 
+
 export var team = 2
 

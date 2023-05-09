@@ -1,35 +1,17 @@
-extends KinematicBody
+extends "res://general_space_object.gd"
 
-var ye = load("res://yframework.gd").new()
-var bullet = preload("res://bullet.tscn")
-var explosion  = preload("res://explosion.tscn")
-var ai_movement = load("res://ai_movement.gd").new()
-var ai_combat = load("res://ai_combat.gd").new()
-
-var ship_name = "heavy_shuttle"
-
-var targ
-
-var rotate_speed = 0.4
-var speed = 3
-var velocity
-
-var weapon_range = 300
-
-export var team = 2
 
 onready var modal = $modal
 
-var hp = 100
-var max_hp = 100
-var dead
-var create_ship_wreck_once
-
-var rng = RandomNumberGenerator.new()
 
 func _ready():
 	add_to_group("big ship")
 	
+	ship_name = "heavy_shuttle"
+	rotate_speed = 0.4
+	speed = 3
+	hp = 100
+	max_hp = 100
 	#change color to red if team 2
 	if team ==2:
 		var material = SpatialMaterial.new()

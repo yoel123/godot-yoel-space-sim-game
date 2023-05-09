@@ -21,13 +21,12 @@ ambient_light_sky_contribution = 0.0
 fog_depth_begin = 3.0
 glow_enabled = true
 glow_levels/4 = true
-glow_levels/5 = false
 glow_intensity = 1.52
 glow_strength = 0.79
 glow_bloom = 0.27
 glow_blend_mode = 0
-glow_hdr_threshold = 4.0
-glow_hdr_luminance_cap = 0.01
+glow_hdr_threshold = 1.16
+glow_hdr_luminance_cap = 149.62
 glow_bicubic_upscale = true
 
 [node name="game" type="Spatial"]

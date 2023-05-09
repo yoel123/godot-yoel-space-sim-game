@@ -1,13 +1,14 @@
-extends KinematicBody
+extends "res://general_space_object.gd"
 
-var is_flare = true
-var team = 1
-var velocity = Vector3.ZERO
+
 var life_timer = 20
 var life_counter = 0
-var speed = 0
+
 
 func _ready():
+	is_flare = true
+	team = 1
+	speed = 0
 	add_to_group("fighter")
 	pass 
 #end ready
