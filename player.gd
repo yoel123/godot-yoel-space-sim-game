@@ -31,6 +31,9 @@ var boost_avail = 0.1
 var boost_usage_rate = 0.5
 var boost_regen_rate = 0.1
 
+# camera shake scaling
+var cam_shake_scake = 0.1
+
 #ship rotation and movment vars
 var velocity = Vector3.ZERO
 var forward_speed = 10
@@ -107,8 +110,11 @@ func get_input(delta):
 		forward_speed = max_speed_boost
 		max_speed_current = max_speed_boost
 		boost_avail -= boost_usage_rate * delta
+		$Camera_Ext.translation.x = rand_range(-1, 1) * cam_shake_scake
+
 	else:
 		max_speed_current = max_speed_normal
+		$Camera_Ext.translation.x = 0
 	
 #end get_input
 	
