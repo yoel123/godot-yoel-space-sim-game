@@ -13,11 +13,13 @@ var ai_combat = load("res://ai_combat.gd").new()
 var yinput_control = "keyboard"#"mouse" #or keyboard
 
 #input response or ship manuverabilety and speed
-export var max_speed = 50
+export var max_speed_normal = 50
+export var max_speed_boost = 60
 export var acceleration = 2.3
 export var pitch_speed = 1.5
 export var roll_speed = 1.9
 export var yaw_speed = 0.75
+var max_speed_current = 50
 var max_yaw = 70
 var max_roll = 70
 var input_response = 8.0
@@ -25,6 +27,13 @@ var input_response = 8.0
 #guns
 var dmg = 1
 
+# boost
+var boost_avail = 0.1
+var boost_usage_rate = 0.5
+var boost_regen_rate = 0.1
+
+# camera shake scaling
+var cam_shake_scake = 0.1
 
 #ship rotation and movment vars
 var velocity = Vector3.ZERO
@@ -64,6 +73,8 @@ func _physics_process(delta):
 	
 	velocity = -transform.basis.z * forward_speed
 	move_and_collide(velocity * delta)
+	boost_handle(delta)
+	$HUD_V1/Data_Boost/ProgressBar_Boost.value = boost_avail * 100
 #end _physics_process
 
 
@@ -77,7 +88,7 @@ func get_input(delta):
 
 	#accelerate and decelerate
 	if Input.is_action_pressed("throttle_up"):
-		forward_speed = lerp(forward_speed, max_speed, acceleration * delta)
+		forward_speed = lerp(forward_speed, max_speed_current, acceleration * delta)
 	if Input.is_action_pressed("throttle_down"):
 		forward_speed = lerp(forward_speed, 0, acceleration * delta)
 		#forward_speed = lerp(forward_speed, -max_speed, acceleration * delta)
@@ -85,7 +96,7 @@ func get_input(delta):
 	#compare target speed
 	if Input.is_action_pressed("match_speed") && is_instance_valid(targ):
 		forward_speed = targ.speed
-		if forward_speed > max_speed:forward_speed = max_speed
+		if forward_speed > max_speed_normal:forward_speed = max_speed_normal
 	
 	shot(delta)
 	
@@ -95,6 +106,17 @@ func get_input(delta):
 			$Camera_Pilot.current = true
 		else:
 			$Camera_Ext.current = true
+	
+	if (Input.is_action_pressed("boost") && (boost_avail > 0)):
+		forward_speed = max_speed_boost
+		max_speed_current = max_speed_boost
+		boost_avail -= boost_usage_rate * delta
+		$Camera_Ext.translation.x = rand_range(-1, 1) * cam_shake_scake
+
+	else:
+		max_speed_current = max_speed_normal
+		$Camera_Ext.translation.x = 0
+	
 #end get_input
 	
 func take_dmg(hit):
@@ -202,8 +224,14 @@ func point_to_target() :
 	pass #end  point_to_target
 
 
-func get_throttle(): return float(forward_speed) / max_speed * 100
+func get_throttle(): return float(forward_speed / max_speed_normal * 100)
 
+func boost_handle(delta):
+	# Clamp boost from 0 to 1
+	boost_avail = clamp(boost_avail, 0, 1)
+	
+	# Regenerate boost over time
+	boost_avail += boost_regen_rate * delta
 
 func _get_mouse_speed() -> Vector2:
 	

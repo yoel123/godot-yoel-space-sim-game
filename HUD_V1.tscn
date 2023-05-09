@@ -109,6 +109,7 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 50.0
+allow_greater = true
 
 [node name="Label_Pri" type="Label" parent="Data_Controls"]
 margin_top = 44.0
@@ -256,3 +257,20 @@ margin_bottom = 112.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 50.0
+
+[node name="Data_Boost" type="VBoxContainer" parent="."]
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.2
+
+[node name="ProgressBar_Boost" type="ProgressBar" parent="Data_Boost"]
+margin_right = 196.0
+margin_bottom = 25.0
+
+[node name="Label_Boost" type="Label" parent="Data_Boost"]
+margin_top = 29.0
+margin_right = 196.0
+margin_bottom = 54.0
+text = "BOOST"
+align = 1
+uppercase = true
