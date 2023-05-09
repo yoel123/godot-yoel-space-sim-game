@@ -74,7 +74,6 @@ func _physics_process(delta):
 	velocity = -transform.basis.z * forward_speed
 	move_and_collide(velocity * delta)
 	boost_handle(delta)
-	$HUD_V1/Data_Boost/ProgressBar_Boost.value = boost_avail * 100
 #end _physics_process
 
 
@@ -111,11 +110,13 @@ func get_input(delta):
 		forward_speed = max_speed_boost
 		max_speed_current = max_speed_boost
 		boost_avail -= boost_usage_rate * delta
-		$Camera_Ext.translation.x = rand_range(-1, 1) * cam_shake_scake
+		print(boost_avail)
+		if boost_avail>0:
+			$Camera_Ext.add_trauma(0.04)
+			$Camera_Pilot.add_trauma(0.04)
 
 	else:
 		max_speed_current = max_speed_normal
-		$Camera_Ext.translation.x = 0
 	
 #end get_input
 	

@@ -89,6 +89,10 @@ func _update_hud():
 	ProgressBar_WPN1.value = player.main_weapon.get_ammo_hud()
 	ProgressBar_WPN2.value = player.secondery_weapon.get_ammo_hud()
 	
+	#boost bar
+	$Data_Boost/ProgressBar_Boost.value = player.boost_avail * 100
+
+	
 	# Set ProgressBar values
 	$Data_Ship/ProgressBar_Hull.value = value_ownship_hull
 	$Data_Ship/ProgressBar_Shield.value = value_ownship_shield
