@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://wrekege.gd" type="Script" id=1]
 
@@ -72,6 +72,9 @@ surfaces/3 = {
 "vertex_count": 16
 }
 
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
 [node name="wrekege1" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -87,3 +90,4 @@ operation = 2
 width = 3.26335
 height = 3.31241
 depth = 3.7662
+material = SubResource( 7 )

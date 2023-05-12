@@ -15,19 +15,22 @@ panorama = ExtResource( 1 )
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 1 )
-background_energy = 2.0
+background_energy = 4.08
 ambient_light_color = Color( 0.964706, 0.960784, 0.984314, 1 )
 ambient_light_sky_contribution = 0.0
 fog_depth_begin = 3.0
 glow_enabled = true
-glow_levels/4 = true
-glow_intensity = 1.52
-glow_strength = 0.79
-glow_bloom = 0.27
+glow_levels/2 = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 4.72
+glow_strength = 1.55
 glow_blend_mode = 0
-glow_hdr_threshold = 1.16
-glow_hdr_luminance_cap = 149.62
+glow_hdr_threshold = 0.9
+glow_hdr_luminance_cap = 0.1
+glow_hdr_scale = 4.0
 glow_bicubic_upscale = true
+glow_high_quality = true
 
 [node name="game" type="Spatial"]
 script = ExtResource( 4 )

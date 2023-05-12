@@ -30,10 +30,8 @@ var dmg = 1
 # boost
 var boost_avail = 0.1
 var boost_usage_rate = 0.5
-var boost_regen_rate = 0.1
-
-# camera shake scaling
-var cam_shake_scake = 0.1
+var boost_regen_rate = 0.3
+var shake_power = 0.03
 
 #ship rotation and movment vars
 var velocity = Vector3.ZERO
@@ -110,10 +108,11 @@ func get_input(delta):
 		forward_speed = max_speed_boost
 		max_speed_current = max_speed_boost
 		boost_avail -= boost_usage_rate * delta
-		print(boost_avail)
+
 		if boost_avail>0:
-			$Camera_Ext.add_trauma(0.04)
-			$Camera_Pilot.add_trauma(0.04)
+			$Camera_Ext.add_trauma(shake_power)
+			$Camera_Pilot.add_trauma(shake_power)
+
 
 	else:
 		max_speed_current = max_speed_normal
@@ -233,6 +232,7 @@ func boost_handle(delta):
 	
 	# Regenerate boost over time
 	boost_avail += boost_regen_rate * delta
+#end boost_handle
 
 func _get_mouse_speed() -> Vector2:
 	

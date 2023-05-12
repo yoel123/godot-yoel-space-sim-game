@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://bullet.gd" type="Script" id=1]
 [ext_resource path="res://yOmniLight.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/laser_tex.png" type="Texture" id=3]
 [ext_resource path="res://assets/‏‏laser_tex2.png" type="Texture" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 3 )
+albedo_color = Color( 1, 0.313726, 0.894118, 1 )
 emission_enabled = true
 emission = Color( 0, 0, 0, 1 )
 emission_energy = 0.15

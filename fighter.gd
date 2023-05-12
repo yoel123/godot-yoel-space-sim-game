@@ -37,7 +37,7 @@ func _ready():
 
 	if team ==1 && modal:
 		var material = SpatialMaterial.new()
-		material.albedo_color = Color(1, 0.63, 0.2)
+		material.albedo_color = Color(0.8, 0.5, 0.16)
 		modal.set_surface_material(3,material)
 		$target_tracker/Sprite.modulate  =  Color(0, 1, 0)
 	pass #end ready
