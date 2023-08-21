@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.12549 )
+
+[node name="Shockwave" type="Spatial"]
+
+[node name="CSGSphere1" type="CSGSphere" parent="."]
+radial_segments = 32
+rings = 32
+material = SubResource( 1 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="CSGSphere1"]
+operation = 2
+calculate_tangents = false
+radius = 0.95
+radial_segments = 32
+rings = 32
+material = SubResource( 1 )
