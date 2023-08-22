@@ -76,12 +76,12 @@ surfaces/3 = {
 "vertex_count": 170
 }
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=10]
 flags_transparent = true
 albedo_color = Color( 0.0509804, 0.34902, 0.862745, 0.537255 )
 
 [sub_resource type="SphereMesh" id=9]
-material = SubResource( 8 )
+material = SubResource( 10 )
 
 [node name="enemy" type="KinematicBody"]
 script = ExtResource( 1 )

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://shockwave.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+params_cull_mode = 2
+albedo_color = Color( 0.870588, 0.521569, 0.0666667, 0.0627451 )
+emission_enabled = true
+emission = Color( 0.858824, 0.329412, 0.0745098, 1 )
+emission_energy = 4.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Shockwave" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="CSGSphere1" type="CSGSphere" parent="."]
+radial_segments = 32
+rings = 32
+material = SubResource( 1 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="CSGSphere1"]
+operation = 2
+calculate_tangents = false
+radius = 0.95
+radial_segments = 32
+rings = 32
+material = SubResource( 1 )
