@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://shaders/ymetalic1matrial.tres" type="Material" id=1]
+[ext_resource path="res://scripts/laser_hardpoint.gd" type="Script" id=2]
+[ext_resource path="res://scenes/laser.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+material = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.439216, 0.427451, 1, 1 )
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1, 0.554855, 0.39347 )
+
+[node name="laser_hardpoint" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="placeholder" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.00708592, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="laser_gun" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="laser_gun"]
+transform = Transform( 0.312381, 0, 0, 0, 0.263762, 0, 0, 0, 0.273021, 0, 0.268273, 0 )
+mesh = SubResource( 2 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="laser_gun"]
+transform = Transform( 0.0600209, 0, 0, 0, 0.0662622, 0, 0, 0, 0.273021, -0.0209215, 0.301988, -0.513868 )
+mesh = SubResource( 2 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="laser_gun"]
+transform = Transform( 0.236628, 0, 0, 0, 0.0963244, 0, 0, 0, 0.0382681, -0.0209215, 0.301988, -0.682534 )
+mesh = SubResource( 4 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="laser_gun"]
+transform = Transform( 0.236628, 0, 0, 0, 0.0963244, 0, 0, 0, 0.0382681, -0.0209215, 0.301988, -0.546881 )
+mesh = SubResource( 4 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="laser_gun"]
+transform = Transform( 0.236628, 0, 0, 0, 0.0963244, 0, 0, 0, 0.0382681, -0.0209215, 0.301988, -0.401509 )
+mesh = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.385463, 0, 0, 0, 0.648877, 0, 0, 0, 1, 0, 0.192813, 0 )
+shape = SubResource( 5 )
+
+[node name="ray" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19384, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -2 )
+collide_with_areas = true
+
+[node name="guns" type="Spatial" parent="."]
+
+[node name="gun" type="Position3D" parent="guns"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0363545, 0.300577, -0.824733 )
+
+[node name="laser" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.999816, 0, 0.01918, 0, 1, 0, -0.01918, 0, -0.999816, 0, 0.287416, -1.27069 )

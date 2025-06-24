@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/effekseer/src/EffekseerEmitter.gdns" type="Script" id=1]
+[ext_resource path="res://assets/effects/yoel_explotion.efkefc" type="Resource" id=2]
+[ext_resource path="res://scripts/explosion.gd" type="Script" id=3]
+
+[node name="explosion_tst" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="EffekseerEmitter" type="Spatial" parent="."]
+transform = Transform( 11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, 0 )
+script = ExtResource( 1 )
+effect = ExtResource( 2 )
+speed = 0.5

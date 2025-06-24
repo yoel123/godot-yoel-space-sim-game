@@ -8,15 +8,48 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "EffekseerEffect",
+"language": "NativeScript",
+"path": "res://addons/effekseer/src/EffekseerEffect.gdns"
+}, {
+"base": "Spatial",
+"class": "EffekseerEmitter",
+"language": "NativeScript",
+"path": "res://addons/effekseer/src/EffekseerEmitter.gdns"
+}, {
+"base": "Node2D",
+"class": "EffekseerEmitter2D",
+"language": "NativeScript",
+"path": "res://addons/effekseer/src/EffekseerEmitter2D.gdns"
+}, {
+"base": "Resource",
+"class": "EffekseerResource",
+"language": "NativeScript",
+"path": "res://addons/effekseer/src/EffekseerResource.gdns"
+} ]
+_global_script_class_icons={
+"EffekseerEffect": "res://addons/effekseer/icon16.png",
+"EffekseerEmitter": "res://addons/effekseer/icon16.png",
+"EffekseerEmitter2D": "res://addons/effekseer/icon16.png",
+"EffekseerResource": "res://addons/effekseer/icon16.png"
+}
+
 [application]
 
 config/name="yspace sim"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 yglobal="*res://global.gd"
+EffekseerSystem="*res://addons/effekseer/src/EffekseerSystem.gdns"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/effekseer/plugin.cfg" )
 
 [input]
 
@@ -103,4 +136,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

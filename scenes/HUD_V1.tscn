@@ -1,0 +1,277 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/B612Mono-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/HUD_V1.gd" type="Script" id=2]
+
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="HUD_V1" type="Control"]
+modulate = Color( 0, 1, 1, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Data_Ship" type="GridContainer" parent="."]
+anchor_top = 0.8
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+columns = 2
+
+[node name="Label_Ship" type="Label" parent="Data_Ship"]
+margin_right = 39.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+text = "SHP"
+align = 1
+uppercase = true
+
+[node name="Label_Status" type="Label" parent="Data_Ship"]
+margin_left = 87.0
+margin_right = 165.0
+margin_bottom = 25.0
+size_flags_horizontal = 4
+text = "STATUS"
+uppercase = true
+
+[node name="Label_Hull" type="Label" parent="Data_Ship"]
+margin_top = 36.0
+margin_right = 52.0
+margin_bottom = 61.0
+size_flags_horizontal = 0
+text = "HULL"
+uppercase = true
+
+[node name="ProgressBar_Hull" type="ProgressBar" parent="Data_Ship"]
+margin_left = 56.0
+margin_top = 29.0
+margin_right = 196.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+
+[node name="Label_Shield" type="Label" parent="Data_Ship"]
+margin_top = 80.0
+margin_right = 52.0
+margin_bottom = 105.0
+size_flags_horizontal = 0
+text = "SHLD"
+uppercase = true
+
+[node name="ProgressBar_Shield" type="ProgressBar" parent="Data_Ship"]
+margin_left = 56.0
+margin_top = 73.0
+margin_right = 196.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+
+[node name="Data_Controls" type="GridContainer" parent="."]
+anchor_right = 0.2
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+columns = 2
+
+[node name="Label_Throttle" type="Label" parent="Data_Controls"]
+margin_top = 5.0
+margin_right = 39.0
+margin_bottom = 30.0
+size_flags_horizontal = 0
+text = "THR"
+uppercase = true
+
+[node name="ProgressBar_Throttle" type="ProgressBar" parent="Data_Controls"]
+margin_left = 56.0
+margin_right = 196.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+allow_greater = true
+
+[node name="Label_Pri" type="Label" parent="Data_Controls"]
+margin_top = 44.0
+margin_right = 52.0
+margin_bottom = 69.0
+size_flags_horizontal = 0
+text = "WPN1"
+uppercase = true
+
+[node name="ProgressBar_WPN1" type="ProgressBar" parent="Data_Controls"]
+margin_left = 56.0
+margin_top = 39.0
+margin_right = 196.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+
+[node name="Label_Sec" type="Label" parent="Data_Controls"]
+margin_top = 82.0
+margin_right = 52.0
+margin_bottom = 107.0
+size_flags_horizontal = 0
+text = "WPN2"
+uppercase = true
+
+[node name="ProgressBar_WPN2" type="ProgressBar" parent="Data_Controls"]
+margin_left = 56.0
+margin_top = 78.0
+margin_right = 196.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+
+[node name="Data_Buttons" type="GridContainer" parent="."]
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.2
+columns = 2
+
+[node name="Button_Camera" type="Button" parent="Data_Buttons"]
+margin_right = 96.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CAM"
+
+[node name="Button_Map" type="Button" parent="Data_Buttons"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MAP"
+
+[node name="Button_Chaff" type="Button" parent="Data_Buttons"]
+margin_top = 39.0
+margin_right = 96.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CHAFF"
+
+[node name="Button_Flare" type="Button" parent="Data_Buttons"]
+margin_left = 100.0
+margin_top = 39.0
+margin_right = 196.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "FLARE"
+
+[node name="Button_Boost" type="Button" parent="Data_Buttons"]
+margin_top = 78.0
+margin_right = 96.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "BOOST"
+
+[node name="Button_Hyper" type="Button" parent="Data_Buttons"]
+margin_left = 100.0
+margin_top = 78.0
+margin_right = 196.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "HYPER"
+
+[node name="Data_Target" type="GridContainer" parent="."]
+anchor_left = 0.8
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+columns = 2
+
+[node name="Label_Target" type="Label" parent="Data_Target"]
+margin_right = 52.0
+margin_bottom = 25.0
+text = "TGT"
+
+[node name="Label_Status" type="Label" parent="Data_Target"]
+margin_left = 87.0
+margin_right = 165.0
+margin_bottom = 25.0
+size_flags_horizontal = 4
+text = "STATUS"
+uppercase = true
+
+[node name="Label_Hull" type="Label" parent="Data_Target"]
+margin_top = 36.0
+margin_right = 52.0
+margin_bottom = 61.0
+size_flags_horizontal = 0
+text = "HULL"
+uppercase = true
+
+[node name="ProgressBar_Hull" type="ProgressBar" parent="Data_Target"]
+margin_left = 56.0
+margin_top = 29.0
+margin_right = 196.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+
+[node name="Label_Shield" type="Label" parent="Data_Target"]
+margin_top = 80.0
+margin_right = 52.0
+margin_bottom = 105.0
+size_flags_horizontal = 0
+text = "SHLD"
+uppercase = true
+
+[node name="ProgressBar_Shield" type="ProgressBar" parent="Data_Target"]
+margin_left = 56.0
+margin_top = 73.0
+margin_right = 196.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+
+[node name="Data_Boost" type="VBoxContainer" parent="."]
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.2
+
+[node name="ProgressBar_Boost" type="ProgressBar" parent="Data_Boost"]
+margin_right = 196.0
+margin_bottom = 25.0
+
+[node name="Label_Boost" type="Label" parent="Data_Boost"]
+margin_top = 29.0
+margin_right = 196.0
+margin_bottom = 54.0
+text = "BOOST"
+align = 1
+uppercase = true
